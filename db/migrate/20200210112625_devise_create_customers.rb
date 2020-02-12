@@ -43,6 +43,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string :addless, null: false
       t.string :telephone, null: false
       t.boolean :member_status, null: false, default: "ture"
+      
 
 
     end
