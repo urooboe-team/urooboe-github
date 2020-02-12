@@ -10,6 +10,72 @@
   </head>
 
   <body>
+    <header>
+      <div>LOGO</div>
+
+      <nav>
+        <ul clsss="nav-list">
+
+          <% if customer_signed_in? %>
+
+           <li class="nav-list-item">
+              <%= link_to "Top(商品一覧)", products_path %></li>
+
+           <li class="nav-list-item">
+              <%= link_to "詳細ページ(aboutページ)", homes_about_path %></li>
+
+           <li class="nav-list-item">
+              <%= link_to "カート", cart_items_path %></li>
+
+           <li class="nav-list-item">
+              <%= link_to "ログイン", new_customer_session_path %></li>
+
+           <li class="nav-list-item">
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+
+           <li class="nav-list-item">
+              <%= link_to "マイページ", customers_path %></li>
+
+          <% elsif admin_signed_in? %>
+
+           <li class="nav-list-item">
+              <%= link_to "Top(商品一覧)", admin_products_path %></li>
+
+           <li class="nav-list-item">
+              <%= link_to "会員一覧", admin_customers_path %></li>
+
+           <li class="nav-list-item">
+              <%= link_to "ジャンル一覧", cart_items_path %></li>
+
+           <li class="nav-list-item">
+              <%= link_to "注文履歴一覧", admin_orders_path %></li>
+
+          <li class="nav-list-item">
+              <%= link_to "ログイン", new_admin_session_path %></li>
+
+           <li class="nav-list-item">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+
+          <% else %>
+           <li class="nav-list-item">
+              <%= link_to "Top(商品一覧)", products_path %></li>
+
+           <li class="nav-list-item">
+              <%= link_to "詳細ページ(aboutページ)", homes_about_path %></li>
+
+           <li class="nav-list-item">
+              <%= link_to "ログイン", new_customer_session_path %></li>
+
+
+         <% end %>
+
+        </ul>
+      </nav>
+    </header>
+
     <%= yield %>
+
   </body>
 </html>
+
+
