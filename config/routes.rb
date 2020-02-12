@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :admins
   devise_for :customers
+  root 'addresses#index'
 
 
 #管理者側のrouting
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :genres, only: [:new, :index, :edit]
+    resources :genres, only: [:new, :index, :edit, :create, :updete]
   end
 
   namespace :admin do
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
  resources :cart_items, only: [:index, :create, :updete, :destroy]
  resource :costomers, only: [:show, :edit, :withdraw, :updete]
  get 'homes/about'
+ get '/top' => "homes#top"
  resources :orders, only: [:new, :thanks, :index, :show, :create, :comfirm]
  resources :products, only: [:index, :show]
 
