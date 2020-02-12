@@ -16,9 +16,9 @@
 		<% @products.each do |product| %>
 		<tr>
 			<td><%= product.id %></td>
-			<td><%= product.name %></td>
-			<td><%= product.unit_price %></td>
-			<td><%= product.genre_name %></td>
+			<td><%= product.product_name %></td>
+			<td><%= product.unit_price %><p>円</p></td>
+			<td><%= product.genre.genre_name %></td>
 			<td><%= product.sale_status %></td>
 			<% end %>
 		</tr>
