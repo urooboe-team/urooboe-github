@@ -17,36 +17,30 @@
 	</table>
     <%= f.submit '登録する' %>
 
-   <% @ship_address.each do | address | %>
+
     <table>
 	    <tr>
 	      <th>郵便番号</th>
+	      <th>住所</th>
+	      <th>宛名</th>
+	      <th></th>
+	    </tr>
+	    <% @ship_addresses.each do |address| %>
+	    <tr>
 	      <td>
 	      	<%= address.postcode %>
 	      </td>
-	  	</tr>
-	  	<tr>
-	      <th>住所</th>
-	       <td>
+	      <td>
 	      	<%= address.address %>
 	      </td>
-	  	</tr>
-	  	<tr>
-	      <th>宛名</th>
 	      <td>
 	      	<%= address.ship_name %>
 	      </td>
-	  	</tr>
-	  	<tr>
-	      <th></th>
-	       <td>
+	      <td>
 	      	edit
       		destory
 	      </td>
-	    </tr>
-
+	     </tr>
+	     <% end %>
  	</table>
-   <% end %>
-
-
 <% end %>

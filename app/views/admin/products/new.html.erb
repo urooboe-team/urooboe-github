@@ -1,6 +1,6 @@
 <div class="container">
-    <h2>商品　新規登録画面</h2>
-     <%= form_for(@product) do |f| %>
+    <h2>商品新規登録画面</h2>
+     <%= form_for(@product, url:admin_products_path) do |f| %>
     　   <%= attachment_image_tag @product,:product_image,:fill,60,60,format:
     	'jpeg' %>
          <%= f.attachment_field :product_image %>
@@ -17,7 +17,8 @@
         <label>税抜価格</label>
         <%= f.text_field :unit_price %><p>円</p><br>
         <label>販売ステータス</label>
-        <%= f.select :sale_status,[["販売中",true],["売り切れ",false]] %>
+        <%= f.select :sale_status,[["販売中",'true'],["売り切れ",'false']] %>
+
 
         <%= f.submit '新規登録' %>
 
