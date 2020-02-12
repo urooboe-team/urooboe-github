@@ -8,5 +8,6 @@ class AddCustomerNil < ActiveRecord::Migration[5.2]
     change_column_null :customers, :address, false
     change_column_null :customers, :telephone, false
     change_column_null :customers, :member_status, false
+
   end
 end
