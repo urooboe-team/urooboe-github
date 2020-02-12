@@ -29,11 +29,10 @@ class Admin::ProductsController < ApplicationController
   def update
     product = Product.find(params[:id])
     product.update(product_params)
-    #binding.pry
     redirect_to admin_product_path
   end
   private
     def product_params
-        params.require(:product).permit(:product_name,:product_description,:genre_name,:unit_price,:product_image_id,:sale_status,:genre_id)
+        params.require(:product).permit(:product_name,:product_description,:genre_name,:unit_price,:product_image,:sale_status,:genre_id)
     end
 end
