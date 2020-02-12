@@ -7,25 +7,25 @@ Rails.application.routes.draw do
 
 #管理者側のrouting
   namespace :admin do
-    resources :products, only: [:new, :index, :show, :create, :edit, :updete]
+    resources :products, only: [:new, :index, :show, :create, :edit, :update]
   end
 
   namespace :admin do
-    resources :orders, only: [:index, :show, :updete]
+    resources :orders, only: [:index, :show, :update]
   end
 
   namespace :admin do
-    resources :genres, only: [:new, :index, :edit, :create, :updete]
+    resources :genres, only: [:new, :index, :edit, :create, :update]
   end
 
   namespace :admin do
-    resources :customers, only: [:index, :show, :edit, :updete]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
 
 #会員側のrouting
- resources :addresses, only: [:index, :edit, :create, :updete, :destroy]
- resources :cart_items, only: [:index, :create, :updete, :destroy]
- resource :customers, only: [:show, :edit, :withdraw, :updete]
+ resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+ resources :cart_items, only: [:index, :create, :update, :destroy]
+ resource :customers, only: [:show, :edit, :withdraw, :update]
  get 'homes/about'
  get '/top' => "homes#top"
  resources :orders, only: [:new, :thanks, :index, :show, :create, :comfirm]
