@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_02_11_061044) do
     t.string "addless", null: false
     t.string "telephone", null: false
     t.boolean "member_status", default: true, null: false
+
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end

@@ -2,7 +2,7 @@
 	<h2>商品編集画面</h2>
 
 	   <%= form_for(@product, url:admin_product_path) do |f| %>
-	     <%= attachment_image_tag @product,:product_image,:fill,60,60,format:'jpeg' %>
+	     <%= attachment_image_tag @product,:product_image,:fill,100,100,format:'jpeg' %>
 	         <%= f.attachment_field :product_image %>
 	<label>商品名</label>
 	 <%= f.text_field :product_name %><br>
