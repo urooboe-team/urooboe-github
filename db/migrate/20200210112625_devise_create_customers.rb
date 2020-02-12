@@ -34,6 +34,17 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
 
 
       t.timestamps null: false
+
+      t.string :last_name, null: false
+      t.string :first_name, null: false
+      t.string :kana_last_name, null: false
+      t.string :kana_first_name, null: false
+      t.string :postcode, null: false
+      t.string :addless, null: false
+      t.string :telephone, null: false
+      t.boolean :member_status, null: false, default: "ture"
+
+
     end
 
     add_index :customers, :email,                unique: true
