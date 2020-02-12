@@ -79,13 +79,8 @@ ActiveRecord::Schema.define(version: 2020_02_11_061044) do
   end
 
   create_table "orders", force: :cascade do |t|
-<<<<<<< HEAD
-    t.string "user_id"
-    t.integer "order_status"
-=======
     t.string "customer_id"
-    t.integer "order_status", default: 0
->>>>>>> master
+    t.integer "order_status"
     t.integer "total_fee"
     t.integer "payment"
     t.integer "freight"
