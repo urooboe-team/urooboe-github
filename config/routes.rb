@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  devise_for :admins
-  devise_for :customers
-
+  devise_for :admin, module: :admin
+  devise_for :customers,  module: :customers
 
 #管理者側のrouting
   namespace :admin do
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    
     resources :genres, only: [:new, :index, :edit, :create, :update]
   end
 
@@ -23,11 +24,19 @@ Rails.application.routes.draw do
   end
 
 #会員側のrouting
- resources :addresses, only: [:index, :edit, :create, :updete, :destroy]
+ resources :addresses, only: [:index, :edit, :create, :update, :destroy]
  resources :cart_items, only: [:index, :create, :updete, :destroy]
- resource :costomers, only: [:show, :edit, :withdraw, :updete]
+ resource :customers, only: [:show, :edit, :withdraw, :updete]
  get 'homes/about'
+ get '/top' => "homes#top"
  resources :orders, only: [:new, :thanks, :index, :show, :create, :comfirm]
  resources :products, only: [:index, :show]
+
+ root to: "products#index"
+
+
+
+
+
 
  end

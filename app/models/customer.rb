@@ -4,10 +4,20 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :kana_last_name, presence: true
+  validates :kana_first_name, presence: true
+  validates :postcode, presence: true
+  validates :address, presence: true
+
   has_many :produsts,  through: :cart_items
   has_many :cart_items, dependent: :destroy
 
   has_many :addresses,  dependent: :destroy
   has_many :orders, dependent: :destroy
+
+  enum member_status: { 有効: true, 退会: false }
+
 
 end
