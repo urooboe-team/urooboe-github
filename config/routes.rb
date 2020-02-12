@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
 #会員側のrouting
- resources :addresses, only: [:index, :edit, :create, :updete, :destroy]
+ resources :addresses, only: [:index, :edit, :create, :update, :destroy]
  resources :cart_items, only: [:index, :create, :updete, :destroy]
  resource :costomers, only: [:show, :edit, :withdraw, :updete]
  get 'homes/about'

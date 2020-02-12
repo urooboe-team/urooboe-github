@@ -1,6 +1,6 @@
 <h1>配送先編集</h1>
 
-   <% @ship_address do |f| %>
+   <%= form_for(@ship_address) do |address| %>
     <table>
 	    <tr>
 	      <th>郵便番号</th>
@@ -10,21 +10,17 @@
 	    </tr>
 	    <tr>
 	      <td>
-	      	<%= f.text_field :postcode %>
+	      	<%= address.text_field :postcode %>
 	      </td>
 	      <td>
-	      	<%= f.text_field :address %>
+	      	<%= address.text_field :address %>
 	      </td>
 	      <td>
-	      	<%= f.text_field :ship_name %>
+	      	<%= address.text_field :ship_name %>
 	      </td>
 	      <td>
-	      	edit
-      		destory
+	      	<%= address.submit "編集する" %>
 	      </td>
 	    </tr>
  	</table>
    <% end %>
-
-
-<% end %>
