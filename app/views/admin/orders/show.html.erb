@@ -1,2 +1,38 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+	<h2>注文詳細画面</h2>
+	<label>購入者<%= order.customer.fast_name.last_name %></label>
+	<label>配送先<%= order.address %></label>
+	<label>支払い方法<%= order.payment %></label>
+	<label>注文ステータス<%= f.select :order_status,[["入金待ち",0],["入金確認",1],["製作中",2],["発送準備中",3],["発送済み",4]] %><%= f.submit '更新', class:"btn btn-primary" %>
+    </label>
+
+
+	<table class="table">
+		<thead>
+			<tr class="active">
+				<th>商品名</th>
+				<th>単価（税込）</th>
+				<th>数量</th>
+				<th>小計</th>
+				<th>制作ステータス</th>
+			</tr>
+			<tbody>
+				<tr>
+					<td><%= %></td>
+					<td><%= order.order_products.unit_price %></td>
+					<td><%= order.order_products.quantity%></td>
+					<td><%=  %></td>
+					<td><%= f.select :production_status,[["着手不可",0],["制作待ち",1],["製作中",2],["制作完了",3]] %><%= f.submit '更新', class:"btn btn-primary" %></td>
+				</tr>
+			</tbody>
+		</thead>
+	</table>
+
+	<div class="row">
+		<div class="col-xs-11">
+			<label>合計<%=  %></label>
+	        <label>送料<%=  %></label>
+	        <label>請求金額合計<%= order.total_fee %></label>
+		</div>
+	</div>
+</div>
