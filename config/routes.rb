@@ -24,8 +24,10 @@ Rails.application.routes.draw do
 
 #会員側のrouting
  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+
  resources :cart_items, only: [:index, :create, :update, :destroy]
  resource :customers, only: [:show, :edit, :withdraw, :update]
+
  get 'homes/about'
  get '/top' => "homes#top"
  resources :orders, only: [:new, :thanks, :index, :show, :create, :comfirm]

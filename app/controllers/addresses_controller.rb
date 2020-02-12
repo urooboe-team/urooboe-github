@@ -1,7 +1,7 @@
 class AddressesController < ApplicationController
   def index
     @ship_address_new = Address.new
-    @ship_address = Address.all
+    @ship_addresses = current_customer.addresses
   end
 
   def edit
@@ -15,15 +15,15 @@ class AddressesController < ApplicationController
     redirect_to '/addresses'
   end
 
-  def updete
-    @ship_address = Adress.find(params[:id])
-    @ship_address.update(address_params)
+  def update
+    ship_address = Address.find(params[:id])
+    ship_address.update(address_params)
     redirect_to  '/addresses'
   end
 
   def destroy
-    @ship_address = Address.find(params[:id])
-    @ship_address.destroy
+    ship_address = Address.find(params[:id])
+    ship_address.destroy
     redirect_to '/addresses'
   end
 
