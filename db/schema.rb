@@ -49,21 +49,13 @@ ActiveRecord::Schema.define(version: 2020_02_11_061044) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "last_name", null: false
-    t.string "fast_name", null: false
-    t.string "kana_last_name", null: false
-    t.string "kana_first_name", null: false
-    t.string "postcode", null: false
-    t.string "address", null: false
-    t.string "telephone", null: false
-    t.string "member_status", default: "t", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
   create_table "genres", force: :cascade do |t|
     t.string "genre_name"
-    t.boolean "display", default: true
+    t.boolean "display"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -73,18 +65,16 @@ ActiveRecord::Schema.define(version: 2020_02_11_061044) do
     t.integer "product_id"
     t.integer "unit_price"
     t.integer "quantity"
-    t.integer "production_status", default: 0
+    t.integer "production_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
     t.string "customer_id"
-
-    t.integer "order_status", default: 0
-
+    t.integer "order_status"
     t.integer "total_fee"
-    t.integer "payment", default: 0
+    t.integer "payment"
     t.integer "freight"
     t.text "address"
     t.string "postcode"
@@ -99,7 +89,7 @@ ActiveRecord::Schema.define(version: 2020_02_11_061044) do
     t.text "product_description"
     t.integer "unit_price"
     t.string "product_image_id"
-    t.boolean "sale_status", default: true
+    t.boolean "sale_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
