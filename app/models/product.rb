@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-
+	 enum sale_status: { 販売中: true, 売り切れ: false }
     has_many :customers,  through: :cart_items
     has_many :cart_items, dependent: :destroy
 
