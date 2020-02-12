@@ -17,7 +17,7 @@
         <label>税抜価格</label>
         <%= f.text_field :unit_price %><p>円</p><br>
         <label>販売ステータス</label>
-        <%= f.select :sale_status,[["販売中",'true'],["売り切れ",'false']] %>
+        <%= f.select :sale_status,[["販売中",'販売中'],["売り切れ",'売り切れ']] %>
 
 
         <%= f.submit '新規登録' %>
