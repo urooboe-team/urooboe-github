@@ -40,10 +40,10 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string :kana_last_name, null: false
       t.string :kana_first_name, null: false
       t.string :postcode, null: false
-      t.string :addless, null: false
+      t.string :address, null: false
       t.string :telephone, null: false
       t.boolean :member_status, null: false, default: "ture"
-      
+
 
 
     end
