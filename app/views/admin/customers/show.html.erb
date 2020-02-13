@@ -1,2 +1,28 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<h2>会員詳細画面</h2>
+<tbody>
+	<tr>
+		<td>顧客ID</td>
+		<td><%= @customer.id %> <% if @customer.member_status == true %>
+			<td>有効</td>
+			<% else %>
+			<td>退会済み</td>
+			<% end %>
+		<td>氏名</td>
+		<td><%= @customer.last_name %><%= @customer.first_name %></td><br>
+		<td>フリガナ</td>
+		<td><%= @customer.kana_last_name %><%= @customer.kana_first_name %></td><br>
+		<td>郵便番号</td>
+		<td><%= @customer.postcode %></td><br>
+		<td>住所</td>
+		<td><%= @customer.address %></td><br>
+		<td>電話番号</td>
+		<td><%= @customer.telephone %></td><br>
+		<td>メールアドレス</td>
+		<td><%= @customer.email %></td><br>
+	</tr>
+</tbody>
+
+<%= link_to "編集する",edit_admin_customer_path %>
+<%= link_to "注文履歴一覧を見る", admin_orders_path %>
+<!-- 
+ <%= @customer.member_status %> -->

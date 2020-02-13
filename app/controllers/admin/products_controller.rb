@@ -7,12 +7,12 @@ class Admin::ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    # @genre = Genre.all
+
   end
 
   def show
      @product = Product.find(params[:id])
-    # @genre = Genre.find(params[:id])
+
 
   end
 
