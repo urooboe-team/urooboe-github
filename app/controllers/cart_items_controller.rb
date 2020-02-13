@@ -1,35 +1,42 @@
 class CartItemsController < ApplicationController
-before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
 
   def index
      @cart_item = current_customer.cart_item.id
   end
 
   def create
-  	if @cart_item.blank?
-       @cart_item = current_customer.cart_items.build(product_id: params[:product_id])
-    end
-
-    @cart_item.quantity += params[:quantity].to_i
-    @cart_item.save
-    redirect_to current_cart
+   if cart_item == where(customer_id: current_customer, cart_item: id)
+      cart_item_user_id = cart_item.current_customer.id
+      cart_item_product = Product.find(params[:id])
+      cart_item_quantity += params[:quantity].to_i
+      cart_item.update
+      redirect_to '/cart_items'
+  else
+      @cart_item = Cart_item.new
+      cart_item_user_id = cart_item.current_customer.id
+      cart_item_product = Product.find(params[:id])
+      cart_item.save
+      cart_item.quantity += params[:quantity].to_i
+      cart_item.save
+      redirect_to '/cart_items'
   end
 
+
   def updete
-    @cart_item.update(quantity: params[:quantity].to_i)
-    redirect_to current_cart
+    cart_item.quantity += params[:quantity].to_i
+    cart_item.save
+    redirect_to '/cart_items'
   end
 
   def destroy
-    @cart_item.destroy
-    redirect_to current_cart
+    cart_item = Cart_item.find(params[:id])
+    cart_item.destroy
+    redirect_to '/addresses'
   end
 
- private
-
-  def setup_cart_item
-    @cart_item = current_cart.cart_items.find_by(product_id: params[:product_id])
+  private
+  def cart_item_params
+      params.require(:cart_item).permit(:quantity)
   end
-
 end
 

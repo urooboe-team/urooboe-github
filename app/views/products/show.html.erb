@@ -10,9 +10,7 @@
 		</div>
 
 		<div class="col-xs-4">
-		<%= form_for(@cart_item, url:cart_items_path) do |i| %>
 	 	 <%= attachment_image_tag @product,:product_image,:fill,300,300,format:'jpeg' %>
-	 	 <%= i.attachment_field : %>
 	 	</div>
 	 	<div class="col-xs-4">
 			<h1><%= @product.product_name%></h1>
@@ -20,13 +18,12 @@
 			 	<%= @product.product_description %>
 		 	</p>
 		     <p>
-		     	<%= product.unit_price %>
+		     	<%= @product.unit_price %>
 		     </p>
-		     <%= select_tag(:quantity, options_for_select([["　個数選択　",0],[1,1],[2,2],[3,3],[4,4],[5,5]])) %>
-		     <%= link_to((current_customer)) do %>
-		     <button type="button" class="btn btn-success btn-xs"
-		     class="btn btn-outline-info">　カートに入れる　</button>
-		     <%end%>
+		     <%= form_for @cart_item do |f| %>
+		     <%= f.select :faculty, [[1,1], [2,2], [3,3], [4,4], [5,5]], include_blank: "個数選択" %>
+		     <%= f.submit 'カートに入れる'%>
+		  	 <% end %>
 		</div>
 	</div>
 </div>
