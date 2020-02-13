@@ -21,7 +21,7 @@
 		     	<%= @product.unit_price %>
 		     </p>
 		     <%= form_for @cart_item do |f| %>
-		     <%= f.select :faculty, [[1,1], [2,2], [3,3], [4,4], [5,5]], include_blank: "個数選択" %>
+		     <%= f.select :quantity, [[1,1], [2,2], [3,3], [4,4], [5,5]], include_blank: "個数選択" %>
 		     <%= f.submit 'カートに入れる'%>
 		  	 <% end %>
 		</div>
