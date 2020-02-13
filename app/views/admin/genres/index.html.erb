@@ -35,7 +35,7 @@
 			 <td><%= genre.genre_name %></td>
 			 <% if genre.display == true %>
 			 <td>有効</td>
-			 <% else genre.display == false %>
+			 <% else %>
 			 <td>無効</td>
 			 <% end %>
 			 <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class:"btn btn-primary" %></td>

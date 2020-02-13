@@ -1,9 +1,12 @@
 <div class="container">
 	<h2>注文詳細画面</h2>
-	<label>購入者<%= order.customer.fast_name.last_name %></label>
+	<label>購入者<%= order.customer.last_name. + order.customer.first_name %></label>
 	<label>配送先<%= order.address %></label>
 	<label>支払い方法<%= order.payment %></label>
-	<label>注文ステータス<%= f.select :order_status,[["入金待ち",0],["入金確認",1],["製作中",2],["発送準備中",3],["発送済み",4]] %><%= f.submit '更新', class:"btn btn-primary" %>
+	<label>注文ステータス
+		<%= form_for :order,url: admin_order_path(order.id) do |f| %>
+		<%= f.select :order_status,[["入金待ち","入金待ち"],["入金確認","入金確認"],["製作中","製作中"],["発送準備中","発送準備中"],["発送済み","発送済み"]] %><%= f.submit '更新', class:"btn btn-primary" %>
+		<% end %>
     </label>
 
 
@@ -17,13 +20,18 @@
 				<th>制作ステータス</th>
 			</tr>
 			<tbody>
+				<% @order.order_products.each do |order_product| %>
 				<tr>
 					<td><%= %></td>
 					<td><%= order.order_products.unit_price %></td>
 					<td><%= order.order_products.quantity%></td>
-					<td><%=  %></td>
-					<td><%= f.select :production_status,[["着手不可",0],["制作待ち",1],["製作中",2],["制作完了",3]] %><%= f.submit '更新', class:"btn btn-primary" %></td>
+					<td><%= order.order_products.unit_price * order.order_products.quantity %> 円</td>
+					<%= form_for :order,url: admin_order_path(order.id) do |f| %>
+					<!-- セレクトの後に制作ステータスをどう呼ぶか -->
+					<td><%= f.select :order.order_products.production_status,[["着手不可","着手不可"],["制作待ち","制作待ち"],["製作中","製作中"],["制作完了","制作完了"]] %><%= f.submit '更新', class:"btn btn-primary" %></td>
+					<% end %>
 				</tr>
+				<% end %>
 			</tbody>
 		</thead>
 	</table>
@@ -31,7 +39,7 @@
 	<div class="row">
 		<div class="col-xs-11">
 			<label>合計<%=  %></label>
-	        <label>送料<%=  %></label>
+	        <label>送料<%= order.freight %></label>
 	        <label>請求金額合計<%= order.total_fee %></label>
 		</div>
 	</div>
