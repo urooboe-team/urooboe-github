@@ -2,8 +2,16 @@ Rails.application.routes.draw do
 
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  devise_for :admin, module: :admin
-  devise_for :customers,  module: :customers
+  devise_for :admin, controllers: {
+    sessions:      'admin/sessions',
+    passwords:     'admin/passwords',
+    registrations: 'admin/registrations'
+    }
+  devise_for :customers, controllers: {
+    sessions:      'customers/sessions',
+    passwords:     'customers/passwords',
+    registrations: 'customers/registrations'
+    }
 
 #管理者側のrouting
   namespace :admin do
@@ -26,11 +34,14 @@ Rails.application.routes.draw do
  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
  resources :cart_items, only: [:index, :create, :update, :destroy]
- resource :customers, only: [:show, :edit, :withdraw, :update]
+ resource :customer, only: [:show, :edit, :withdraw, :update, :destroy]
 
- get 'homes/about'
+ # get '/my_page' => 'customers#show' ,as: 'my_page'
+
+ get 'homes/about'  => "homes#about"
  get '/top' => "homes#top"
- resources :orders, only: [:new, :thanks, :index, :show, :create, :comfirm]
+ get '/withdraw' => "customers#withdraw"
+  resources :orders, only: [:new, :thanks, :index, :show, :create, :comfirm]
  resources :products, only: [:index, :show]
 
  root to: "products#index"
