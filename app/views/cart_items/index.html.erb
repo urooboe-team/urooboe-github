@@ -1,15 +1,20 @@
 <h1>ショッピングカート</h1>
-<%= link_to"カートを空にする", cart_item_path(@cart_items), method: :delete  %>
+<%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete  %>
 <table>
 	<tr>
 	  <th>商品名</th>
+	  <th></th>
 	  <th>単価（税込）</th>
 	  <th>数量</th>
 	  <th>小計</th>
 	  <th></th>
 	</tr>
+	<% sum = 0 %>
 	<% @cart_items.each do |item| %>
 	<tr>
+	  <td>
+	  	<%= attachment_image_tag item.product,:product_image,:fill,100,100,format:'jpeg' %>
+	  </td>
 	  <td>
 	  	<%= item.product.product_name %>
 	  </td>
@@ -23,11 +28,13 @@
 		<% end %>
 	  </td>
 	  <td>
-	  	<%= item.product.unit_price * item.quantity %>
+	  	<%= item.product.unit_price * 1.1 * item.quantity %>
 	  </td>
 	  <td>
 		<%= link_to "削除する", cart_item_path(item), method: :delete %>
 	 </td>
 	 </tr>
+	 <% sum += (item.product.unit_price * 1.1 * item.quantity).round %>
+
 	 <% end %>
-</table>
+</table>合計</th><th><%= sum %></th></tr>
