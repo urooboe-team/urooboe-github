@@ -1,6 +1,8 @@
+
+<div class="container">
 <h1>会員一覧画面</h1>
 
-  <table class="table table-striped">
+  <table class="table table-striped" style="width: 70%">
      <tr>
      	<th>会員ID</th>
   	    <th>氏名</th>
@@ -12,12 +14,17 @@
 
      <tr>
      	<th><%= customer.id %></th>
-      <th><%= full_name(@customer)  %>
       <th><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id) %></th>
 
      	<th><%= customer.email %></th>
-     	<th><%= customer.member_status %></th>
+      <% if customer.member_status == true %>
+     	<th>有効</th>
+      <% else %>
+      <th>退会済み</th>
+      <% end %>
      </tr>
 
      <% end %>
   </table>
+
+  </div>

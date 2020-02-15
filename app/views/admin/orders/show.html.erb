@@ -11,7 +11,6 @@
 
 
 	<table class="table">
-		<thead>
 			<tr class="active">
 				<th>商品名</th>
 				<th>単価（税込）</th>
@@ -22,25 +21,25 @@
 			<tbody>
 				<% @order.order_products.each do |order_product| %>
 				<tr>
-					<td><%= %></td>
-					<td><%= order.order_products.unit_price %></td>
-					<td><%= order.order_products.quantity%></td>
-					<td><%= order.order_products.unit_price * order.order_products.quantity %> 円</td>
+					<td><%= order.order_product.product.product_name %></td>
+					<td><%= order.order_product.unit_price %></td>
+					<td><%= order.order_product.quantity %></td>
+					<td><%= order.order_product.unit_price * order.order_product.quantity %> 円</td>
 					<%= form_for :order,url: admin_order_path(order.id) do |f| %>
 					<!-- セレクトの後に制作ステータスをどう呼ぶか -->
-					<td><%= f.select :order.order_products.production_status,[["着手不可","着手不可"],["制作待ち","制作待ち"],["製作中","製作中"],["制作完了","制作完了"]] %><%= f.submit '更新', class:"btn btn-primary" %></td>
+					<td><%= f.select :order.order_product.production_status,[["着手不可","着手不可"],["制作待ち","制作待ち"],["製作中","製作中"],["制作完了","制作完了"]] %><%= f.submit '更新', class:"btn btn-primary" %></td>
 					<% end %>
 				</tr>
 				<% end %>
 			</tbody>
-		</thead>
 	</table>
 
 	<div class="row">
 		<div class="col-xs-11">
-			<label>合計<%=  %></label>
-	        <label>送料<%= order.freight %></label>
-	        <label>請求金額合計<%= order.total_fee %></label>
+			<!-- 小計の合計は？ -->
+			<label>合計<%=  %>円</label>
+	        <label>送料<%= order.freight %>円</label>
+	        <label>請求金額合計<%= order.total_fee %>円</label>
 		</div>
 	</div>
 </div>
