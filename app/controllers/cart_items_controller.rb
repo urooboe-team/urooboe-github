@@ -1,44 +1,38 @@
 class CartItemsController < ApplicationController
 
   def index
-     @cart_item = current_customer.cart_item.id
+     @cart_items = current_customer.cart_items
   end
 
   def create
-    if 
-      cart_item == where(customer_id: current_customer, cart_item: id)
-      cart_item_user_id = cart_item.current_customer.id
-      cart_item_product = Product.find(params[:id])
-      cart_item_quantity += params[:quantity].to_i
-      cart_item.update
-      redirect_to '/cart_items'
+    cart_item = CartItem.find_by(customer_id: current_customer,product_id: cart_item_params[:product_id])
+    if cart_item == nil
+       cart_item = CartItem.new(cart_item_params)
+       cart_item.customer_id = current_customer.id
+       cart_item.save
+       redirect_to '/cart_items'
     else
-      cart_item = CartItem.new
-      cart_item_user_id = cart_item.current_customer.id
-      cart_item_product = Product.find(params[:id])
-      cart_item.save
-      cart_item.quantity += params[:quantity].to_i
-      cart_item.save
-      redirect_to '/cart_items'
+       cart_item.quantity += cart_item_params[:quantity].to_i
+       cart_item.save
+       redirect_to '/cart_items'
     end
   end
 
-
-  def updete
-    cart_item.quantity += params[:quantity].to_i
-    cart_item.save
+  def update
+    cart_item = CartItem.find(params[:id])
+    cart_item.update(cart_item_params)
     redirect_to '/cart_items'
   end
 
   def destroy
     cart_item = CartItem.find(params[:id])
     cart_item.destroy
-    redirect_to '/addresses'
+    redirect_to '/cart_items'
   end
 
   private
   def cart_item_params
-      params.require(:cart_item).permit(:quantity)
+      params.require(:cart_item).permit(:product_id,:quantity)
   end
 end
 

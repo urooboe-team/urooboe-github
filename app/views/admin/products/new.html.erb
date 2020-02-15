@@ -1,7 +1,7 @@
 <div class="container">
     <h2>商品新規登録画面</h2>
      <%= form_for(@product, url:admin_products_path) do |f| %>
-    　   <%= attachment_image_tag @product,:product_image,:fill,60,60,format:
+       <%= attachment_image_tag @product,:product_image,:fill,60,60,format:
     	'jpeg' %>
          <%= f.attachment_field :product_image %>
 
