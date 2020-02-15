@@ -19,15 +19,17 @@
 				<th>制作ステータス</th>
 			</tr>
 			<tbody>
+				<% sum = 0 %>
 				<% @order.order_products.each do |order_product| %>
 				<tr>
 					<td><%= order.order_product.product.product_name %></td>
-					<td><%= order.order_product.unit_price %></td>
+					<td><%= order.order_product.add_tax %></td>
 					<td><%= order.order_product.quantity %></td>
-					<td><%= order.order_product.unit_price * order.order_product.quantity %> 円</td>
+					<td><%= order.order_product.add_tax * order.order_product.quantity %></td>
 					<%= form_for :order,url: admin_order_path(order.id) do |f| %>
 					<!-- セレクトの後に制作ステータスをどう呼ぶか -->
 					<td><%= f.select :order.order_product.production_status,[["着手不可","着手不可"],["制作待ち","制作待ち"],["製作中","製作中"],["制作完了","制作完了"]] %><%= f.submit '更新', class:"btn btn-primary" %></td>
+					<% sum += order.order_product.add_tax * order.order_product.quantity %>
 					<% end %>
 				</tr>
 				<% end %>
@@ -36,10 +38,9 @@
 
 	<div class="row">
 		<div class="col-xs-11">
-			<!-- 小計の合計は？ -->
-			<label>合計<%=  %>円</label>
+			<label>合計<%= sum %>円</label>
 	        <label>送料<%= order.freight %>円</label>
-	        <label>請求金額合計<%= order.total_fee %>円</label>
+	        <label>請求金額合計<%= sum + order.freight %>円</label>
 		</div>
 	</div>
 </div>
