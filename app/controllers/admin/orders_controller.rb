@@ -1,4 +1,11 @@
 class Admin::OrdersController < ApplicationController
+  def top
+    # @order = Order.find(params[:id])
+    # @order = Order.find_by(id: params[:id])
+    # # 変数@likes_countを定義
+    # @likes_count = Like.where(order_id: @order.id).count
+  end
+
   def index
   	@orders = Order.all
   end

@@ -7,4 +7,7 @@ class Product < ApplicationRecord
 	belongs_to :genre
 	attachment :product_image
 
+  def add_tax
+    self.unit_price = (unit_price * 1.1).round
+  end
 end

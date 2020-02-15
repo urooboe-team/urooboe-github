@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     }
 
 #管理者側のrouting
+  get 'orders/top' => "orders#top"
   namespace :admin do
     resources :products, only: [:new, :index, :show, :create, :edit, :update]
   end
