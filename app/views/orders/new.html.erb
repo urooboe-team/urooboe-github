@@ -1,2 +1,41 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<h1>購入情報入力</h1>
+
+<%= form_with(url:comfirm_path,local: true) do |f| %>
+
+<h3>支払い方法</h3>
+
+  <%= radio_button_tag("payment", "0") %>クレジットカード
+  <%= radio_button_tag("payment", "1") %>銀行振り込み
+  </br>
+
+
+<h3>お届け先</h3>
+
+  <%= radio_button_tag("addresses", "0") %>  ご自身の住所 <%= current_customer.postcode %> <%= current_customer.address %> <%= current_customer.last_name %> <%= current_customer.first_name %></br>
+
+  <%= radio_button_tag("addresses", "1") %>  登録住所から選択
+
+
+　　<%= f.collection_select :choice, Address.all, :id, :information %></br>
+
+
+  <%= radio_button_tag("addresses", "2") %>  新しいお届け先</br>
+
+
+   <table class="table table-striped">
+     <tr>
+     <th>郵便番号</th><td><%= f.text_field :postcode %></td>
+     </tr>
+
+     <tr>
+     <th>住所</th><td><%= f.text_area :address %></td>
+     </tr>
+
+     <tr>
+     <th>宛名</th><td><%= f.text_field :ship_name %></td>
+     </tr>
+     </table>
+
+     <%= f.submit "確認画面に進む" %>
+
+<% end %>
