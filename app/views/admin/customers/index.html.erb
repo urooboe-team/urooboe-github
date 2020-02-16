@@ -12,7 +12,7 @@
 
      <tr>
      	<th><%= customer.id %></th>
-      <th><%= full_name(@customer)  %>
+    
       <th><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id) %></th>
 
      	<th><%= customer.email %></th>

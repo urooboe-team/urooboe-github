@@ -1,10 +1,11 @@
 class ProductsController < ApplicationController
   def index
-  	 @products = Product.all
-  	 # @product = Product.where(genre_id: params[:id] )
-  	 # @products = Product.where(active: true)
-  	 @product = Genre.find_by(genre_name: params[:genre_name]).products
-
+  	@products = Product.all
+  	if into = params[:genre_name]
+  		 @products = Genre.find_by(genre_name: params[:genre_name]).products
+  	 else 
+  	 	Product.all
+  	  end
   end
 
   def show

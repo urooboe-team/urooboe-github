@@ -1,8 +1,12 @@
 <div class="container">
+	    <div class="row">
+        <div class="col-xs-3">
 	<h2>商品　詳細画面</h2>
 	<%= attachment_image_tag @product,:product_image,:fill,100,100,format:
     	'jpeg' %>
+    </div>
 
+     <div class="col-xs-9">
 	<label>商品名</label>
 	<%= @product.product_name %><br>
 	<label>商品説明</label>
@@ -10,9 +14,12 @@
 	<label>ジャンル</label>
 	<%= @product.genre.genre_name %><br>
 	<label>税抜価格</label>
-	<%= @product.unit_price %><P>円</P>
+	<%= @product.unit_price %>円<br>
 	<label>販売ステータス</label>
-	<%= @product.sale_status %>
-
-	<%= link_to "編集する",edit_admin_product_path %></li>
+	<%= @product.sale_status %><br>
+<button class="btn btn-default">
+	<%= link_to "編集する",edit_admin_product_path %>
+</button>
+</div>
+</div>
 </div>
