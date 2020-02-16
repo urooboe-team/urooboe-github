@@ -1,11 +1,12 @@
 class ProductsController < ApplicationController
   def index
-  	@products = Product.all
-  	if into = params[:genre_name]
-  		 @products = Genre.find_by(genre_name: params[:genre_name]).products
-  	 else 
-  	 	Product.all
-  	  end
+    @products = Product.all
+  	 if into = params[:genre_name]
+  	 @products = Genre.find_by(genre_name: params[:genre_name]).products
+    else
+     Product.all
+     end
+
   end
 
   def show

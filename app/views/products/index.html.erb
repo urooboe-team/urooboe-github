@@ -14,7 +14,10 @@
 		<div class="col-xs-8">
 			<div>
 			  <% @products.each do |product| %>
+<<<<<<< HEAD
 			   <% if product.genre.display == true %>
+=======
+>>>>>>> master
 			  <%= link_to(product_path(product), class: 'list-content') do %>
 			 	 <%= attachment_image_tag product,:product_image,:fill,100,100,format:'jpeg' %>
 			  	<p>
