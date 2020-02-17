@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/8d33356096.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -18,7 +19,7 @@
 
           <% if customer_signed_in? %>
 
-        
+
 
            <li class="nav-list-item">
               <%= link_to "Top(商品一覧)", products_path %></li>

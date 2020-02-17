@@ -15,3 +15,28 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+.btn-circle-flat {
+  display: inline-block;
+  text-decoration: none;
+  background: #87befd;
+  color: #FFF;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  transition: .4s;
+  float:right;
+  font-size:40px;
+  margin-right:70px;
+}
+
+.btn-circle-flat:hover {
+  background: #668ad8;
+}
+
+body {
+  background-color:#FEF5E1;
+}
