@@ -1,9 +1,12 @@
 <div class="container">
 	<h2>商品編集画面</h2>
-
+ <div class="row">
+        <div class="col-xs-3">
 	   <%= form_for(@product, url:admin_product_path) do |f| %>
 	     <%= attachment_image_tag @product,:product_image,:fill,100,100,format:'jpeg' %>
 	         <%= f.attachment_field :product_image %>
+	     </div>
+	 <div class="col-xs-9">
 	<label>商品名</label>
 	 <%= f.text_field :product_name %><br>
 	 <label>商品説明</label>
@@ -11,12 +14,14 @@
 	  <label>ジャンル</label>
 	   <%= f.select :genre_id, Genre.all.map { |genre| [genre.genre_name, genre.id] } %><br>
 	        <label>税抜価格</label>
-	        <%= f.text_field :unit_price %><p>円</p><br>
+	        <%= f.text_field :unit_price %>円<br>
 	        <label>販売ステータス</label>
-	        <%= f.select :sale_status,[["販売中","販売中"],["売り切れ","売り切れ"]] %>
+	        <%= f.select :sale_status,[["販売中","販売中"],["売り切れ","売り切れ"]] %><br>
 
 
-	        <%= f.submit '変更を保存' %>
+	       <input type="submit" name="commit" value="変更を保存" class="btn btn-primary col-xs-3" data-disable-with="変更を保存" >
+	    </div>
 	        <% end %>
+	    </div>
  </div>
 

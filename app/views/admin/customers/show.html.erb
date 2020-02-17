@@ -1,28 +1,51 @@
-<h2>会員詳細画面</h2>
-<tbody>
-	<tr>
-		<td>顧客ID</td>
-		<td><%= @customer.id %> <% if @customer.member_status == true %>
-			<td>有効</td>
-			<% else %>
-			<td>退会済み</td>
-			<% end %>
-		<td>氏名</td>
-		<td><%= @customer.last_name %><%= @customer.first_name %></td><br>
-		<td>フリガナ</td>
-		<td><%= @customer.kana_last_name %><%= @customer.kana_first_name %></td><br>
-		<td>郵便番号</td>
-		<td><%= @customer.postcode %></td><br>
-		<td>住所</td>
-		<td><%= @customer.address %></td><br>
-		<td>電話番号</td>
-		<td><%= @customer.telephone %></td><br>
-		<td>メールアドレス</td>
-		<td><%= @customer.email %></td><br>
-	</tr>
-</tbody>
+<div class="container">
+		<div class="row">
 
-<%= link_to "編集する",edit_admin_customer_path %>
-<%= link_to "注文履歴一覧を見る", admin_orders_path %>
+<h2>会員詳細画面</h2>
+<div class="col-xs-5">
+<table class="table" >
+	
+	<tr >
+		<th style="border:none;">顧客ID</th>
+		<td style="border:none;"><%= @customer.id %> <% if @customer.member_status == true %></td>
+			<td style="border:none;">有効会員</td><br>
+			<% else %>
+			<td style="border:none;">退会済み</td><br>
+			<% end %>
+	</tr>
+	<tr style="border:none;">
+		<th style="border:none;">氏名</th>
+		<td style="border:none;"><%= @customer.last_name %><%= @customer.first_name %></td>
+	</tr>
+	<tr style="border:none;">
+		<th style="border:none;">フリガナ</th>
+		<td style="border:none;"><%= @customer.kana_last_name %><%= @customer.kana_first_name %></td>
+	</tr>
+	<tr style="border:none;">
+		<th style="border:none;">郵便番号</th>
+		<td style="border:none;"><%= @customer.postcode %></td>
+	</tr>
+	<tr style="border:none;">
+		<th style="border:none;">住所</th>
+		<td style="border:none;"><%= @customer.address %></td>
+	</tr>
+	<tr style="border:none;">
+		<th style="border:none;">電話番号</th>
+		<td style="border:none;"><%= @customer.telephone %></td>
+	</tr>
+	<tr style="border:none;">
+		<th style="border:none;">メールアドレス</th>
+		<td style="border:none;"><%= @customer.email %></td>
+	</tr>
+
+</tbody>
+</table>
+
+
+<%= link_to "編集する",edit_admin_customer_path, class:"btn btn-primary" %>
+
+<%= link_to "注文履歴一覧を見る", admin_orders_path ,class:"btn btn-primary" %>
+
+</div>
 <!-- 
  <%= @customer.member_status %> -->
