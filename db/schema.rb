@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2020_02_11_061044) do
     t.string "postcode"
     t.text "address"
     t.string "ship_name"
+    t.integer "address_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -9,4 +9,11 @@ class Order < ApplicationRecord
 		発送準備中: 3,
 		発送済み: 4,
 	}
+
+	enum payment: {
+		クレジットカード: 0,
+		銀行振り込み: 1,
+	}
+
+
 end
