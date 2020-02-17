@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
     else
      Product.all
      end
+
   end
 
   def show
