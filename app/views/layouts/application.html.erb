@@ -23,6 +23,9 @@
 
           <% if customer_signed_in? %>
 
+          <h3>
+          <%= current_customer.last_name + current_customer.last_name %>さんがログイン中です。
+          </h3>
 
            <li class="nav-list-item">
               <%= link_to "Top(商品一覧)", products_path %></li>
@@ -48,7 +51,7 @@
               <%= link_to "Top(商品一覧)", admin_products_path %></li>
 
            <li class="nav-list-item">
-              <%= link_to "会員一覧", top_path %></li>
+              <%= link_to "会員一覧", orders_top_path %></li>
 
            <li class="nav-list-item">
               <%= link_to "ジャンル一覧", cart_items_path %></li>

@@ -43,16 +43,15 @@ Rails.application.routes.draw do
  # get '/my_page' => 'customers#show' ,as: 'my_page'
 
  get 'homes/about'  => "homes#about"
- get '/top' => "homes#top"
+
  get '/withdraw' => "customers#withdraw"
-  resources :orders, only: [:new, :thanks, :index, :show, :create, :comfirm]
+ get '/comfirm' => "orders#comfirm"
+ post '/comfirm' => "orders#comfirm"
+ resources :orders, only: [:new, :thanks, :index, :show, :create, :comfirm]
  resources :products, only: [:index, :show]
 
  root to: "products#index"
-
-
-
-
-
+ get 'thanks' => "orders#thanks"
+ post 'thanks' => "orders#thanks"
 
  end
