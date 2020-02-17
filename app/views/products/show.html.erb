@@ -1,14 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-3">
-			<h1>ジャンル検索</h1>
-			<% @products.each do | product | %>
-				<p>
-				<%= link_to product.genre.genre_name,"#" %>
-				</p>
-			<%end%>
-		</div>
-
+		
 		<div class="col-xs-4">
 			<%= attachment_image_tag @product,:product_image,:fill,300,300,format:'jpeg' %>
 		</div>
