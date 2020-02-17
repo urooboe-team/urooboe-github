@@ -5,16 +5,19 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    cart_item = CartItem.find_by(customer_id: current_customer,product_id: cart_item_params[:product_id])
-    if cart_item == nil
-       cart_item = CartItem.new(cart_item_params)
-       cart_item.customer_id = current_customer.id
-       cart_item.save
-       redirect_to '/cart_items'
+    if  params[:cart_item][:quantity].empty?
+       redirect_to '/products/' + params[:cart_item][:product_id]
     else
-       cart_item.quantity += cart_item_params[:quantity].to_i
-       cart_item.save
-       redirect_to '/cart_items'
+      cart_item = CartItem.find_by(customer_id: current_customer,product_id: cart_item_params[:product_id])
+      if cart_item == nil
+         cart_item = CartItem.new(cart_item_params)
+         cart_item.customer_id = current_customer.id
+         cart_item.save
+         redirect_to '/cart_items'
+      else cart_item.quantity += cart_item_params[:quantity].to_i
+         cart_item.save
+         redirect_to '/cart_items'
+      end
     end
   end
 

@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
   	@products = Product.all
   	@cart_item = CartItem.new
   end
+  
   def product_params
         params.require(:product).permit(:genre_name,:genre_id)
     end

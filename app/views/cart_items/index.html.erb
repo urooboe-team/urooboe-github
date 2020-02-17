@@ -35,7 +35,7 @@
 		<%= link_to "削除する", cart_item_path(item), method: :delete, class:"btn btn-danger" %>
 	  </td>
 	</tr>
-	   <% sum += item.product.add_tax * item.quantity %>
+	   <% sum += (item.product.unit_price * item.quantity)*1.1.round %>
 	 <% end %>
 
 </table>
