@@ -1,6 +1,6 @@
 <h1>購入情報入力</h1>
 
-<%= form_with(url:comfirm_path,local: true) do |f| %>
+<%= form_with(model: @order, url:comfirm_path,local: true) do |f| %>
 
 <h3>支払い方法</h3>
 
@@ -16,7 +16,7 @@
   <%= radio_button_tag("addresses", "1") %>  登録住所から選択
 
 
-　　<%= f.collection_select :choice, Address.all, :id, :information %></br>
+　　<%= collection_select :address, :id, Address.all, :id, :information %></br>
 
 
   <%= radio_button_tag("addresses", "2") %>  新しいお届け先</br>

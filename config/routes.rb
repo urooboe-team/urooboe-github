@@ -51,5 +51,6 @@ delete '/cart_items/destroy_all' => "cart_items#destroy_all"
 
  root to: "products#index"
  get 'thanks' => "orders#thanks"
+ post 'thanks' => "orders#thanks"
 
  end

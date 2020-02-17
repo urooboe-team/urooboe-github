@@ -9,10 +9,15 @@
    </tr>
 
 　　<tr>
-   <th>商品名</th>
-   <th>単価（税込）</th>
-   <th>数量</th>
-   <th>小計</th>
+
+
+   </tr>
+
+   <tr>
+   <th>送料　</th>
+   <th>合計　</th>
+   <th>合計金額　</th>
+
    </tr>
 
 </table>
@@ -24,25 +29,31 @@
   </tr>
 
   <tr>
-  <th><%= @msg_p %></th>
+  <th><%= @order.payment %></th>
   <th>
-  <% if @number == "current_address" %>
-         <%= @msg_a.postcode %>
-         <%= @msg_a.address %>
-         <%= @msg_a.last_name %>
-         <%= @msg_a.first_name %>
 
-  <% else  %>
+         <%= @order.postcode %>
+         <%= @order.address %>
+         <%= @order.ship_name %>
 
-         <%= @msg_b.postcode %>
-         <%= @msg_b.address %>
-         <%= @msg_b.ship_name %>
-
-  <% end %>
   </th>
   </tr>
 
 </table>
+
+
+
+ <%= form_for(@order) do |f| %>
+
+  <%= f.hidden_field :payment, value: @order.payment  %>
+  <%= f.hidden_field :address, value: @order.address %>
+
+  <%= f.submit '購入する' %>
+
+ <% end %>
+
+
+
 
 
 
