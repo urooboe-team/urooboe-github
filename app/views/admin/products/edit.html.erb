@@ -18,8 +18,8 @@
 	        <label>販売ステータス</label>
 	        <%= f.select :sale_status,[["販売中","販売中"],["売り切れ","売り切れ"]] %><br>
 
-
-	       <input type="submit" name="commit" value="変更を保存" class="btn btn-primary col-xs-3" data-disable-with="変更を保存" >
+	          <%= f.submit '変更を保存', class:"btn btn-primary" %>
+	      
 	    </div>
 	        <% end %>
 	    </div>
