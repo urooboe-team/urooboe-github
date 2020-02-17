@@ -7,18 +7,20 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/9f7238856e.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
     <header>
-      <div>LOGO</div>
-
-      <nav>
-        <ul clsss="nav-list">
+      <nav class="navbar navbar-warning">
+        <div class="container">
+      <div>
+       <%= image_tag  "cake.png" ,class:"logo" %>
+      </div>
+  <nav>
+        <ul class="nav navbar-nav navbar-right">
 
           <% if customer_signed_in? %>
-
-        
 
            <li class="nav-list-item">
               <%= link_to "Top(商品一覧)", products_path %></li>
@@ -68,11 +70,13 @@
            <li class="nav-list-item">
               <%= link_to "ログイン", new_customer_session_path %></li>
 
+            </ul>
+          </nav>
+             </div>
 
+</nav>
          <% end %>
 
-        </ul>
-      </nav>
     </header>
 
     <%= yield %>

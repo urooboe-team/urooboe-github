@@ -7,21 +7,7 @@ class Product < ApplicationRecord
 	belongs_to :genre
 	attachment :product_image
 
-
-# def add_tax
-    # self.price = (cart_item.product.unit_price * * 1.1).round
-  # end
-
-
-
-
-   def add_tax(product_id)
-
-     tax_included = Product.find(product_id).unit_price.to_i*1.1
-     add_tax = tax_included.to_i
-   end
-
-  # def add_tax
-  #   self.add_tax = unit_price.to_i * 1.1.to_i
-  # end
+def add_tax
+    self.unit_price = (unit_price * 1.1).round
+  end
 end

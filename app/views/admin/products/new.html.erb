@@ -1,11 +1,13 @@
 <div class="container">
     <h2>商品新規登録画面</h2>
-     <%= form_for(@product, url:admin_products_path) do |f| %>
-       <%= attachment_image_tag @product,:product_image,:fill,60,60,format:
-    	'jpeg' %>
-         <%= f.attachment_field :product_image %>
+    <div class="row">
+        <div class="col-xs-3">
+            <%= form_for(@product, url:admin_products_path) do |f| %>
+            <%= attachment_image_tag @product,:product_image,:fill,60,60,format:'jpeg' %>
+            <%= f.attachment_field :product_image %>
+        </div>
 
-
+     <div class="col-xs-9">
        <label>商品名</label>
         <%= f.text_field :product_name %><br>
 
@@ -15,12 +17,17 @@
         <%#= f.select :genre_id,["ケーキ","プリン","焼き菓子","キャンディ"], :prompt => "選択してください"] %>
         <%= f.select :genre_id, Genre.all.map { |genre| [genre.genre_name, genre.id] } %><br>
         <label>税抜価格</label>
-        <%= f.text_field :unit_price %><p>円</p><br>
+        <%= f.text_field :unit_price %>円<br>
         <label>販売ステータス</label>
-        <%= f.select :sale_status,[["販売中",'販売中'],["売り切れ",'売り切れ']] %>
+        <%= f.select :sale_status,[["販売中",'販売中'],["売り切れ",'売り切れ']] %><br>
+   
+<!-- 
+ <button type="button" class="btn btn-primary">
+        <%= f.submit '新規登録' %> -->
+        <input type="submit" name="commit" value="新規登録" class="btn btn-primary col-xs-3" data-disable-with="新規登録" >
 
-
-        <%= f.submit '新規登録' %>
+    </div>
+     </div>
 
         <% end %>
 </div>

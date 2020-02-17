@@ -3,20 +3,27 @@
 		<div class="col-xs-3">
 			<h1>ジャンル検索</h1>
 			<% @products.each do | product | %>
+			 <% if product.genre.display == true %>
 			<p>
 			<%= link_to product.genre.genre_name,products_path(genre_name: product.genre.genre_name) %>
 			</p>
+			<% end %>
 			<%end%>
 		</div>
 
 		<div class="col-xs-8">
 			<div>
 			  <% @products.each do |product| %>
+
+			   <% if product.genre.display == true %>
+
 			  <%= link_to(product_path(product), class: 'list-content') do %>
 			 	 <%= attachment_image_tag product,:product_image,:fill,100,100,format:'jpeg' %>
 			  	<p>
 			     <%= product.product_name %><br>
-			     <%= product.add_tax(product.id)  %>
+
+			     <%= product.add_tax  %>円
+			     <% end %>
 			 	</p>
 			     <% end %>
 			  <% end %>
