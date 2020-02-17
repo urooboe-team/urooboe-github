@@ -33,8 +33,9 @@ Rails.application.routes.draw do
 
 #会員側のrouting
  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
- 
-delete '/cart_items/destroy_all' => "cart_items#destroy_all"
+
+ delete 'cart_items/destroy_all'  => "cart_items#destroy_all"
+
  resources :cart_items, only: [:index, :create, :update, :destroy]
 
  resource :customer, only: [:show, :edit, :withdraw, :update, :destroy]
@@ -42,16 +43,15 @@ delete '/cart_items/destroy_all' => "cart_items#destroy_all"
  # get '/my_page' => 'customers#show' ,as: 'my_page'
 
  get 'homes/about'  => "homes#about"
- get '/top' => "homes#top"
+
  get '/withdraw' => "customers#withdraw"
-  resources :orders, only: [:new, :thanks, :index, :show, :create, :comfirm]
+ get '/comfirm' => "orders#comfirm"
+ post '/comfirm' => "orders#comfirm"
+ resources :orders, only: [:new, :thanks, :index, :show, :create, :comfirm]
  resources :products, only: [:index, :show]
 
  root to: "products#index"
-
-
-
-
-
+ get 'thanks' => "orders#thanks"
+ post 'thanks' => "orders#thanks"
 
  end
