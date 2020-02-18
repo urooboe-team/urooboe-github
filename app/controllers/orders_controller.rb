@@ -19,14 +19,21 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.save
+    @order.customer_id = current_customer.id
+    @order.total_fee = 
+
+    if @order.save
+
 
     @carts = current_customer.cart_items
     @carts.each do |cart|
-      item = CartItem.new(product_id: cart.product_id, order_id: @order.id)
-      item.price = cart.product.unit_price
-      item.quantity = cart.quantity
+      item = OrderProduct.new(product_id: cart.product_id, order_id: @order.id,
+             unit_price: cart.product.unit_price, quantity: cart.quantity)
       item.save
+    end
+    redirect_to thanks_path
+
+    else
     end
 
   end
@@ -87,11 +94,4 @@ private
   # end
 end
 
-   # <% @cars.each do |cart| %>
-
-   # <th>商品名</th>
-   # <th>単価（税込）<%= cart.item.price %></th>
-   # <th>数量 <%= cart.item.quantity %></th>
-   # <th>小計</th>
-
-   # <% end %>
+  

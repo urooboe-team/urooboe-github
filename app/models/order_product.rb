@@ -1,5 +1,5 @@
 class OrderProduct < ApplicationRecord
-  has_many :orders, dependent: :destroy
+  belongs_to :order
   belongs_to :product
 
   enum producttion_status: {

@@ -8,8 +8,15 @@
    <th>小計</th>
    </tr>
 
-　　<tr>
 
+ <% @carts.each do |cart| %>
+
+    <th>商品名</th>
+    <th>単価（税込）<%= cart.product.unit_price %></th>
+    <th>数量 <%= cart.quantity %></th>
+    <th>小計</th>
+
+    <% end %>
 
    </tr>
 
