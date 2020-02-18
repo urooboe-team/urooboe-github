@@ -1,12 +1,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-3">
-			<h3 class="line">ジャンル検索</h3>
-			<div class="genre">
+		<div class="genre-box">
+			<h4 class="genre-font-h4">ジャンル検索</h4>
+
 			<% @genres.each do | genre | %>
 			 <% if genre.display == true %>
 
-			<p>
+			<p class="genre-font">
 			<%= link_to genre.genre_name,products_path(genre_name: genre.genre_name) %>
 			</p>
 			<% end %>
@@ -15,14 +16,14 @@
 	</div>
 
 		<div class="col-md-9">
-			<div>
+			
+			<div class="product-box">
 			  <% @products.each do |product| %>
-
 			   <% if product.genre.display == true %>
 			   <div class="cake">
 
 			  <%= link_to(product_path(product), class: 'list-content') do %>
-			 	 <%= attachment_image_tag product,:product_image,:fill,100,100,format:'jpeg' %>
+			 	 <%= attachment_image_tag product,:product_image,:fill,200,200,format:'jpeg' %>
 			  	<p>
 			     <%= product.product_name %><br>
 			     
@@ -30,6 +31,7 @@
 			     <% end %>
 			 	</p>
 			 </div>
+			
 			     <% end %>
 			  <% end %>
 			</div>

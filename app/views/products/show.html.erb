@@ -1,16 +1,17 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-3">
-			<h1>ジャンル検索</h1>
+		<div class="genre-box">
+			<h4 class="genre-font-h4">ジャンル検索</h4>
 			<% Genre.all.each do | genre | %>
 			<% if genre.display == true %>
-			<p>
+			<p class="genre-font">
 			<%= link_to genre.genre_name,products_path(genre_name: genre.genre_name) %>
 			</p>
 			<% end %>
 			<% end %>
 		</div>
-		
+		</div>
 		<div class="col-xs-4">
 			<%= attachment_image_tag @product,:product_image,:fill,300,300,format:'jpeg' %>
 		</div>

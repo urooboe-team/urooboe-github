@@ -15,18 +15,18 @@
       <nav class="navbar navbar-warning">
         <div class="container">
       <div>
-       <%= image_tag  "cake.png" ,class:"logo" %>
+       <% image_tag  "cake.png" ,class:"logo" %>
       </div>
   <nav>
         <ul class="nav navbar-nav navbar-right">
 
           <% if customer_signed_in? %>
 
-          <h3>
+          <h5>
           <%= current_customer.last_name + current_customer.last_name %>さんがログイン中です。
-          </h3>
+          </h5>
 
-           <li class="nav-list-item">
+           <li class="nav-item">
               <%= link_to "Top(商品一覧)", products_path %></li>
 
            <li class="nav-list-item">
@@ -63,6 +63,8 @@
 
            <li class="nav-list-item">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+              <li class="nav-list-item">
+              </li>
 
           <% else %>
            <li class="nav-list-item">
@@ -84,7 +86,14 @@
     </header>
 
     <%= yield %>
-    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+        <div class="col-xs-3 col-xs-offset-9">
+        </div>
+      </div>
+    </div>
+    </footer>
 
 
   </body>
