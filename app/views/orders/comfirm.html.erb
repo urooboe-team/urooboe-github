@@ -1,17 +1,18 @@
-<h1>注文情報確認</h1>
+<div class="container">
+      <div class="row">
+        <div class="col-xs-8">
+<h3>注文情報確認</h3>
 
-<table class="table table-striped">
+<table class="table">
    <tr>
    <th>商品名</th>
    <th>単価（税込）</th>
    <th>数量</th>
    <th>小計</th>
    </tr>
+ </table>
 
-　　<tr>
-
-
-   </tr>
+　　<table class="table">
 
    <tr>
    <th>送料　</th>
@@ -22,7 +23,7 @@
 
 </table>
 
-<table class="table table-striped">
+<table class="table">
   <tr>
   <th>支払い方法</th>
   <th>お届け先</th>
@@ -48,7 +49,7 @@
   <%= f.hidden_field :payment, value: @order.payment  %>
   <%= f.hidden_field :address, value: @order.address %>
 
-  <%= f.submit '購入する' %>
+  <%= f.submit '購入する' ,class:"btn btn-primary"%>
 
  <% end %>
 
