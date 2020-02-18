@@ -1,12 +1,16 @@
-<h1>注文情報確認</h1>
+<div class="container">
+      <div class="row">
+        <div class="col-xs-8">
+<h3>注文情報確認</h3>
 
-<table class="table table-striped">
+<table class="table">
    <tr>
    <th>商品名</th>
    <th>単価（税込）</th>
    <th>数量</th>
    <th>小計</th>
    </tr>
+
  <tbody>
   <% sum = 0 %>
   <% @carts.each do |cart| %>
@@ -19,6 +23,11 @@
    <% sum += cart.product.unit_price * cart.quantity %>
 <% end %>
 </tbody>
+ </table>
+
+　　<table class="table">
+
+
    <tr>
    <th>送料</th>
    <th>小計</th>
@@ -36,7 +45,7 @@
 
 </table>
 
-<table class="table table-striped">
+<table class="table">
   <tr>
   <th>支払い方法</th>
   <th>お届け先</th>
@@ -64,7 +73,7 @@
   <% total_fee = @order.freight + sum %>
   <%= f.hidden_field :total_fee, value: total_fee %>
 
-  <%= f.submit '購入する' %>
+  <%= f.submit '購入する' ,class:"btn btn-primary"%>
 
  <% end %>
 

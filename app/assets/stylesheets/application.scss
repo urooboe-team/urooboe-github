@@ -45,8 +45,14 @@
 
  body{
  font-family:"serif";
+<<<<<<< HEAD
  background-color:#fff;
+=======
+ background-color:#fffacd;
+
+>>>>>>> master
  }
+
  header{
  background-color:#FAFBFC;
  border-top: #F8C446 solid 3px;
@@ -56,9 +62,43 @@
  header::after {
 
  }
+
+ .clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
  .list-content{
  display:inline-block;
  float:left;
  padding-right:30px;
  }
+<<<<<<< HEAD
 
+=======
+ .cake{
+  display:inline-block;
+ float:left;
+ padding-right:30px;
+ }
+
+.genre{
+ font-family:"serif";
+ background-color:#ffe4e1;
+ }
+.line{
+	border-bottom:#332426 solid 5px;
+}
+
+.footer{
+	background-color:#ffe4e1;
+	height:80px;
+	position:absolute;
+	bottom:0;
+	width:100%;
+}
+header{
+	height:80px;
+	margin-bottom:40px
+}
+>>>>>>> master

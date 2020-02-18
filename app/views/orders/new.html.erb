@@ -1,19 +1,23 @@
-<h1>購入情報入力</h1>
+<div class="container">
+      <div class="row">
+        <div class="col-xs-8">
+<h3>購入情報入力</h3>
 
 <%= form_with(model: @order, url:comfirm_path,local: true) do |f| %>
 
-<h3>支払い方法</h3>
+<h4>支払い方法</h4>
 
-  <%= radio_button_tag("payment", "0") %>クレジットカード
+  <%= radio_button_tag("payment", "0") %>クレジットカード<br>
   <%= radio_button_tag("payment", "1") %>銀行振り込み
   </br>
 
 
-<h3>お届け先</h3>
+<h4>お届け先</h4>
 
-  <%= radio_button_tag("addresses", "0") %>  ご自身の住所 <%= current_customer.postcode %> <%= current_customer.address %> <%= current_customer.last_name %> <%= current_customer.first_name %></br>
+  <%= radio_button_tag("addresses", "0") %>  ご自身の住所 <%= current_customer.postcode %> <%= current_customer.address %><br>
+   <%= current_customer.last_name %> <%= current_customer.first_name %></br>
 
-  <%= radio_button_tag("addresses", "1") %>  登録住所から選択
+  <%= radio_button_tag("addresses", "1") %>  登録住所から選択<br>
 
 
 　　<%= collection_select :address, :id, Address.all, :id, :information %></br>
@@ -22,9 +26,9 @@
   <%= radio_button_tag("addresses", "2") %>  新しいお届け先</br>
 
 
-   <table class="table table-striped">
+   <table class="table">
      <tr>
-     <th>郵便番号</th><td><%= f.text_field :postcode %></td>
+     <th>郵便番号</th><td><%= f.text_field :postcode %>ハイフンなし</td>
      </tr>
 
      <tr>
@@ -36,6 +40,6 @@
      </tr>
      </table>
 
-     <%= f.submit "確認画面に進む" %>
+     <%= f.submit "確認画面に進む" ,class:"btn btn-primary"%>
 
 <% end %>

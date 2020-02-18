@@ -4,12 +4,16 @@
 			<h1>ジャンル検索</h1>
 			<% Genre.all.each do | genre | %>
 			<% if genre.display == true %>
-			  <p>
-			  <%= link_to genre.genre_name,products_path(genre_name:genre.genre_name) %>
+
+			<p>
+			<%= link_to genre.genre_name,products_path(genre_name: genre.genre_name) %>
+
 			</p>
 			<% end %>
 			<% end %>
 		</div>
+
+
 
 		<div class="col-xs-4">
 			<%= attachment_image_tag @product,:product_image,:fill,300,300,format:'jpeg' %>
@@ -17,7 +21,7 @@
 		<div class="col-xs-4">
 			<h1><%= @product.product_name%></h1>
 			<p><%= @product.product_description %></p>
-			<p><%= @product.add_tax %></p>
+			<p><%= @product.add_tax %>円</p>
 			<%= form_with model: @cart_item, local: true do |f| %>
 				<%= f.select :quantity, [[1,1], [2,2], [3,3], [4,4], [5,5]], include_blank: '個数選択' %>
 				<%= f.hidden_field :product_id, :value => @product.id %>

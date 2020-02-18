@@ -5,8 +5,9 @@
 			<% Genre.all.each do | genre | %>
 
 			<% if genre.display == true %>
-			  <p>
-			  <%= link_to genre.genre_name,products_path(genre_name:genre.genre_name) %>
+			<p>
+			<%= link_to genre.genre_name,products_path(genre_name: genre.genre_name) %>
+
 			</p>
 			<% end %>
 			<% end %>
@@ -21,10 +22,12 @@
 			 	 <%= attachment_image_tag product,:product_image,:fill,100,100,format:'jpeg' %>
 			  	<p>
 			     <%= product.product_name %><br>
-			     <%= product.unit_price %>
+			     <%= product.unit_price %>円
 			 	</p>
-			     <% end %>
-			     <% end %>
+
+			 	<% end %>
+			    <% end %>
+
 			  <% end %>
 			</div>
 		</div>

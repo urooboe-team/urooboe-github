@@ -1,7 +1,10 @@
-<h1>配送先編集</h1>
+<div class="container">
+  <div class="row">
+        <div class="col-xs-8">
+<label>配送先編集</label>
 
    <%= form_for(@ship_address) do |address| %>
-    <table>
+    <table class="table">
 	    <tr>
 	      <th>郵便番号</th>
 	      <th>住所</th>
@@ -19,9 +22,11 @@
 	      	<%= address.text_field :ship_name %>
 	      </td>
 	      <td>
-	      	<%= address.submit "編集する" %>
+	      	<%= address.submit "編集する" ,class:"btn btn-primary"%>
 	      </td>
 	    </tr>
  	</table>
    <% end %>
-
+</div>
+</div>
+</div>
