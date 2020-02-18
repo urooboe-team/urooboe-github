@@ -16,6 +16,27 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.btn-circle-flat {
+  display: inline-block;
+  text-decoration: none;
+  background: #F8C446;
+  color: #FFF;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  transition: .4s;
+  float:right;
+  font-size:40px;
+  margin-right:70px;
+}
+
+.btn-circle-flat:hover {
+  background: #F8C446;
+}
+
  .logo{
  height:50px;
  width:50px;
@@ -46,7 +67,6 @@ body{
  font-family:"serif";
  color:#664d51;
  height: 800px;
-
  }
 
  .clearfix::after {
@@ -59,11 +79,14 @@ body{
  float:left;
  padding-right:30px;
  }
+
  .product-box{
  width: 100%;
  height: 300px;
  margin: 0 auto;
  }
+
+
  .cake{
  display:inline-block;
  float:left;
@@ -149,3 +172,4 @@ table th, table td, .product-table tr, .product-table th, .product-table td {
 	bottom:0;
 	width:100%;
 }
+

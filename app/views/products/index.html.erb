@@ -11,13 +11,14 @@
 			<%= link_to genre.genre_name,products_path(genre_name: genre.genre_name) %>
 			</p>
 			<% end %>
-			<%end%>
+			<% end %>
 		</div>
 	</div>
 
 		<div class="col-md-9">
-			
+
 			<div class="product-box">
+
 			  <% @products.each do |product| %>
 			   <% if product.genre.display == true %>
 			   <div class="cake">
@@ -30,11 +31,12 @@
 			     <%= product.add_tax  %>円
 			     <% end %>
 			 	</p>
+
 			 </div>
-			
+
 			     <% end %>
 			  <% end %>
-			</div>
+
 		</div>
 	</div>
-</div>
+ </div>
