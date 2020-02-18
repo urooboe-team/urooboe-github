@@ -14,15 +14,15 @@ Rails.application.routes.draw do
     }
 
 #管理者側のrouting
-  get 'orders/top' => "orders#top"
+  get 'admin/orders/top' => "admin/orders#top"
   namespace :admin do
     resources :products, only: [:new, :index, :show, :create, :edit, :update]
   end
+patch 'admin/order_products/:id/' => "admin/order_products#update" , as:'admin_order_products'
 
   namespace :admin do
     resources :orders, only: [:index, :show, :update]
   end
-
   namespace :admin do
     resources :genres, only: [:new, :index, :edit, :create, :update]
   end

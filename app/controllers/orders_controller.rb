@@ -11,22 +11,30 @@ class OrdersController < ApplicationController
   end
 
   def index
-
+    @orders = Order.all
+    @order_products = OrderProduct.all
+    @order = current_customer.id
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_products = OrderProduct.all
+    # @order_product = OrderProduct.find(params[:id])
   end
 
   def create
     @order = Order.new(order_params)
-    @order.save
+    @order.customer_id = current_customer.id
 
+    if @order.save
     @carts = current_customer.cart_items
     @carts.each do |cart|
-      item = CartItem.new(product_id: cart.product_id, order_id: @order.id)
-      item.price = cart.product.unit_price
-      item.quantity = cart.quantity
+      item = OrderProduct.new(product_id: cart.product_id, order_id: @order.id,unit_price:cart.product.unit_price,quantity:cart.quantity)
+
       item.save
+
+    end
+      redirect_to thanks_path
     end
 
   end
@@ -76,7 +84,7 @@ class OrdersController < ApplicationController
 
 private
   def order_params
-   params.require(:order).permit(:postcode, :address, :ship_name)
+   params.require(:order).permit(:postcode, :address, :ship_name, :total_fee)
   end
   def address_params
    params.require(:address).permit(:id)
