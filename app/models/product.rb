@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-	 enum sale_status: { 販売中: true, 売り切れ: false }
+	enum sale_status: { 販売中: true, 売り切れ: false }
     has_many :customers,  through: :cart_items
     has_many :cart_items, dependent: :destroy
 
@@ -7,7 +7,7 @@ class Product < ApplicationRecord
 	belongs_to :genre
 	attachment :product_image
 
-  def add_tax
+def add_tax
     self.unit_price = (unit_price * 1.1).round
   end
 end

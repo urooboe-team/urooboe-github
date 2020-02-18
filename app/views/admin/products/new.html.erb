@@ -20,12 +20,8 @@
         <%= f.text_field :unit_price %>円<br>
         <label>販売ステータス</label>
         <%= f.select :sale_status,[["販売中",'販売中'],["売り切れ",'売り切れ']] %><br>
-   
-<!-- 
- <button type="button" class="btn btn-primary">
-        <%= f.submit '新規登録' %> -->
-        <input type="submit" name="commit" value="新規登録" class="btn btn-primary col-xs-3" data-disable-with="新規登録" >
 
+　　　　 <%= f.submit '新規登録', class:"btn btn-primary" %>
     </div>
      </div>
 

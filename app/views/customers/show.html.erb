@@ -1,13 +1,15 @@
-<h1>マイページ</h1>
-
-<h3>登録情報</h3>
+<div class="container">
+    <div class="row">
+<div class="col-xs-5">
+<h2>マイページ</h2>
+<label>登録情報</label>
 
 <%= link_to "編集する", edit_customer_path, class:"btn btn-default" %>
-
 <%= link_to "パスワードを変更する", customer_path, class:"btn btn-default" %></br>
 
 
-<table class="table table-striped">
+<table class="table"  border="1">
+  <thead>
   <tr>
    <th>氏名</th>
    <td><%= current_customer.last_name %> <%= current_customer.first_name %></td>
@@ -37,14 +39,14 @@
 	 <th>メールアドレス</th>
    <td><%= current_customer.email %></td>
   </tr>
-
+</thead>
 </table>
 
-<h3>配送先</h3>
+<label>配送先 </label>
 
-<%= link_to "一覧を見る", addresses_path, class:"btn btn-default" %>
+<%= link_to "一覧を見る", addresses_path, class:"btn btn-default" %><br>
 
-<h3>注文一覧</h3>
+<label>注文一覧</label>
 
 <%= link_to "一覧を見る", orders_path, class:"btn btn-default" %>
 

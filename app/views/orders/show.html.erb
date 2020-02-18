@@ -1,2 +1,75 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+	<h2>注文履歴詳細</h2>
+	<label>注文情報</label>
+	<table class="table">
+		<tbody>
+			
+			<tr>
+				<td>注文日</td>
+				<td><%= link_to @order.created_at, order_path(@order.id) %></td>
+			</tr>
+			<tr>
+				<td>配送先</td>
+				<td><%= @order.postcode %><%=@order.address %><%= @order.ship_name %></td>
+			</tr>
+			<tr>
+				<td>ステータス</td>
+				<td><%= @order.order_status %></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	<div class="col-xs-9">
+      <label>請求情報</label>
+	  <table class="table">
+		  <tbody>
+			 <% sum = 0 %>
+			<% @order_products.each do |order_product| %>
+			 <% sum += order_product.add_tax * order_product.quantity %>
+				<% end %>
+			 <tr>
+				<td>商品合計</td>
+				<td><%= sum %>円</td>
+			 </tr>
+			 <tr>
+				<td>配送料</td>
+				<td><%= @order.freight %>円</td>
+			 </tr>
+			 <tr>
+				<td>ご請求額</td>
+				<td><%= sum + @order.freight %>円</td>
+			 </tr>
+
+		  </tbody>
+	  </table>
+    </div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-3">
+     <label>注文内容</label>
+	  <table class="table">
+
+			<tr>
+				<th>商品</th>
+				<th>単価</th>
+				<th>個数</th>
+				<th>小計</th>
+			</tr>
+
+		 <tbody>
+			<% @order_products.each do |order_product| %>
+			<tr>
+				<td><%= order_product.product.product_name %></td>
+				<td><%= order_product.unit_price %></td>
+				<td><%= order_product.quantity %></td>
+				<td><%= order_product.unit_price * order_product.quantity %></td>
+			</tr>
+			<% end %>
+		 </tbody>
+	  </table>
+	</div>
+	</div>
+</div>

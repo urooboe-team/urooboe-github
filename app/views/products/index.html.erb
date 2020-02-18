@@ -1,32 +1,41 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-3">
-			<h1>ジャンル検索</h1>
-			<% @products.each do | product | %>
-			 <% if product.genre.display == true %>
+		<div class="col-md-3">
+
+
+			<h3 class="line">ジャンル検索</h3>
+			<div class="genre">
+			<% @genres.each do | genre | %>
+			 <% if genre.display == true %>
+
 			<p>
-			<%= link_to product.genre.genre_name,products_path(genre_name: product.genre.genre_name) %>
+			<%= link_to genre.genre_name,products_path(genre_name: genre.genre_name) %>
 			</p>
 			<% end %>
-			<%end%>
+			<% end %>
 		</div>
+	</div>
 
-		<div class="col-xs-8">
-			<div>
+		<div class="col-md-9">
+
 			  <% @products.each do |product| %>
-
 			   <% if product.genre.display == true %>
+			   <div class="cake">
 
 			  <%= link_to(product_path(product), class: 'list-content') do %>
 			 	 <%= attachment_image_tag product,:product_image,:fill,100,100,format:'jpeg' %>
 			  	<p>
 			     <%= product.product_name %><br>
-			     <%= product.add_tax  %>
+
+			     <%= product.add_tax  %>円
 			     <% end %>
 			 	</p>
+
+			 </div>
+
 			     <% end %>
 			  <% end %>
-			</div>
+
 		</div>
 	</div>
-</div>
+ </div>
