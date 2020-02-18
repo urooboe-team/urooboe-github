@@ -1,8 +1,11 @@
-<h1>会員情報の編集</h1>
+<div class="container">
+  <div class="row">
+        <div class="col-xs-8">
+<label>会員情報の編集</label><%= link_to "退会する", withdraw_path, class:"btn btn-danger" %>
 
 <%= form_for(@customer) do |f| %>
 
-<table class="table table-striped">
+<table class="table">
   <tr>
    <th>氏名</th>
    <td><%= f.text_field :last_name %><%= f.text_field :first_name %></td>
@@ -37,9 +40,5 @@
 
 
 
-<%= f.submit "編集内容を保存する", class:"btn btn-default" %>
-
-<%= link_to "退会する", withdraw_path, class:"btn btn-default" %>
-
-
+<%= f.submit "編集内容を保存する", class:"btn btn-primary" %>
 <% end %>
