@@ -1,14 +1,5 @@
 <div class="container">
 	<div class="row">
-<<<<<<< HEAD
-
-		<div class="col-md-3">
-			<h1 class="genre-title">ジャンル検索</h1>
-			<% Genre.all.each do | genre | %>
-			<% if genre.display == true %>
-			  <p class="genre-text">
-			  <%= link_to genre.genre_name,products_path(genre_name:genre.genre_name) %>
-=======
 		<div class="col-md-3">
 
 
@@ -19,7 +10,6 @@
 
 			<p>
 			<%= link_to genre.genre_name,products_path(genre_name: genre.genre_name) %>
->>>>>>> master
 			</p>
 			<% end %>
 			<% end %>
@@ -27,20 +17,11 @@
 	</div>
 
 		<div class="col-md-9">
-<<<<<<< HEAD
-=======
-			<div>
-			  <% @products.each do |product| %>
->>>>>>> master
 
 			  <% @products.each do |product| %>
 			   <% if product.genre.display == true %>
-<<<<<<< HEAD
-				<div class="xxx">
-=======
 			   <div class="cake">
 
->>>>>>> master
 			  <%= link_to(product_path(product), class: 'list-content') do %>
 			 	 <%= attachment_image_tag product,:product_image,:fill,100,100,format:'jpeg' %>
 			  	<p>
@@ -49,11 +30,9 @@
 			     <%= product.add_tax  %>円
 			     <% end %>
 			 	</p>
-<<<<<<< HEAD
-			 	</div>
-=======
+
 			 </div>
->>>>>>> master
+
 			     <% end %>
 			  <% end %>
 
