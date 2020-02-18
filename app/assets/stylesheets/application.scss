@@ -25,6 +25,7 @@
  body{
  font-family:"serif";
  background-color:#fffacd;
+
  }
 
  header{
@@ -54,6 +55,15 @@
 .line{
 	border-bottom:#332426 solid 5px;
 }
-footer{
+
+.footer{
 	background-color:#ffe4e1;
+	height:80px;
+	position:absolute;
+	bottom:0;
+	width:100%;
+}
+header{
+	height:80px;
+	margin-bottom:40px
 }

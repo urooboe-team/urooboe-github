@@ -2,12 +2,14 @@
 	<div class="row">
 		<div class="col-md-3">
 
-			<h2 class="line">ジャンル検索</h2>
+
+			<h3 class="line">ジャンル検索</h3>
 			<div class="genre">
-			<% @products.each do | product | %>
-			 <% if product.genre.display == true %>
+			<% @genres.each do | genre | %>
+			 <% if genre.display == true %>
+
 			<p>
-			<%= link_to product.genre.genre_name,products_path(genre_name: product.genre.genre_name) %>
+			<%= link_to genre.genre_name,products_path(genre_name: genre.genre_name) %>
 			</p>
 			<% end %>
 			<%end%>
