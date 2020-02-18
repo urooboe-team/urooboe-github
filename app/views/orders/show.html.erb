@@ -5,20 +5,19 @@
 	<label>注文情報</label>
 	<table class="table">
 		<tbody>
-			<% @orders.each do |order| %>
+			
 			<tr>
 				<td>注文日</td>
-				<td><%= link_to order.created_at, admin_order_path(order.id) %></td>
+				<td><%= link_to @order.created_at, order_path(@order.id) %></td>
 			</tr>
 			<tr>
 				<td>配送先</td>
-				<td><%= order.infomation %></td>
+				<td><%= @order.postcode %><%=@order.address %><%= @order.ship_name %></td>
 			</tr>
 			<tr>
 				<td>ステータス</td>
-				<td><%= order.order_status %></td>
+				<td><%= @order.order_status %></td>
 			</tr>
-			<% end %>
 		</tbody>
 	</table>
 	</div>
@@ -27,21 +26,22 @@
 	  <table class="table">
 		  <tbody>
 			 <% sum = 0 %>
-			 <% @orders.each do |order| %>
-			 <% sum += order.order_product.add_tax * order.order_product.quantity %>
+			<% @order_products.each do |order_product| %>
+			 <% sum += order_product.add_tax * order_product.quantity %>
+				<% end %>
 			 <tr>
 				<td>商品合計</td>
 				<td><%= sum %>円</td>
 			 </tr>
 			 <tr>
 				<td>配送料</td>
-				<td><%= order.freight %>円</td>
+				<td><%= @order.freight %>円</td>
 			 </tr>
 			 <tr>
 				<td>ご請求額</td>
-				<td><%= sum + order.freight %></td>
+				<td><%= sum + @order.freight %>円</td>
 			 </tr>
-			 <% end %>
+
 		  </tbody>
 	  </table>
     </div>
@@ -60,12 +60,12 @@
 			</tr>
 
 		 <tbody>
-			<% @orders.each do |order| %>
+			<% @order_products.each do |order_product| %>
 			<tr>
-				<td><%= order.order_product.product.product_name %></td>
-				<td><%= order.order_product.add_tax %></td>
-				<td><%= order.order_product.quantity %></td>
-				<td><%= order.order_product.add_tax * order.order_product.quantity %></td>
+				<td><%= order_product.product.product_name %></td>
+				<td><%= order_product.unit_price %></td>
+				<td><%= order_product.quantity %></td>
+				<td><%= order_product.unit_price * order_product.quantity %></td>
 			</tr>
 			<% end %>
 		 </tbody>
