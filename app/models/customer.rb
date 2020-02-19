@@ -4,12 +4,19 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :kana_last_name, presence: true
-  validates :kana_first_name, presence: true
-  validates :postcode, presence: true
+  validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/}
+
+  validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/}
+
+  validates :kana_last_name, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
+
+  validates :kana_first_name, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
+
+  validates :postcode, presence: true, format: { with: /\A\d{7}\z/ }
+
   validates :address, presence: true
+
+  validates :telephone, format: { with: /\A\d{10,11}\z/ }
 
   has_many :produsts,  through: :cart_items
   has_many :cart_items, dependent: :destroy
