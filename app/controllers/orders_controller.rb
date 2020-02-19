@@ -26,15 +26,19 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
 
+
     if @order.save
     @carts = current_customer.cart_items
     @carts.each do |cart|
-      item = OrderProduct.new(product_id: cart.product_id, order_id: @order.id,unit_price:cart.product.unit_price,quantity:cart.quantity)
 
+      item = OrderProduct.new(product_id: cart.product_id, order_id: @order.id,unit_price: cart.product.unit_price, quantity: cart.quantity)
       item.save
 
     end
       redirect_to thanks_path
+
+
+    else
     end
 
   end
@@ -42,15 +46,8 @@ class OrdersController < ApplicationController
   def comfirm
       @carts = current_customer.cart_items
       @order = Order.new(order_params)
-      pp @order
-    # if params["payment"] == "0"
       @order.payment = params["payment"].to_i
 
-    # elsif params["payment"] == "1"
-    #   @msg_p = "銀行振り込み"
-
-
-    # end
 
 
     if params["addresses"] == "0"
@@ -60,24 +57,24 @@ class OrdersController < ApplicationController
 
 
     elsif params["addresses"] == "1"
-      # @number = "other_address"
+
       @order.postcode = Address.find(params[:address][:id]).postcode
       @order.address = Address.find(params[:address][:id]).address
       @order.ship_name = Address.find(params[:address][:id]).ship_name
 
 
     elsif params["addresses"] == "2"
-      # @number = "other_address"
-       #address = Address.new(order_params
-      #postcode: params[][:postcode], address: params[:address], ship_name: params[:ship_name], customer_id: current_customer.id)
 
-      #@order.postcode = address.postcode
-      #@order.c = address.addresΩ
       address = Address.new
+      address.customer_id = current_customer.id
       address.postcode = @order.postcode
       address.address = @order.address
       address.ship_name = @order.ship_name
-      adress.save
+      address.save
+
+      @order.postcode = address.postcode
+      @order.address = address.address
+      @order.ship_name = address.ship_name
 
     end
    end
@@ -87,7 +84,7 @@ private
    params.require(:order).permit(:postcode, :address, :ship_name, :total_fee)
   end
   def address_params
-   params.require(:address).permit(:id)
+   params.require(:address).permit(:id, :postcode, :address, :ship_name)
   end
 
 #   def address_params
@@ -95,11 +92,4 @@ private
   # end
 end
 
-   # <% @cars.each do |cart| %>
-
-   # <th>商品名</th>
-   # <th>単価（税込）<%= cart.item.price %></th>
-   # <th>数量 <%= cart.item.quantity %></th>
-   # <th>小計</th>
-
-   # <% end %>
+  

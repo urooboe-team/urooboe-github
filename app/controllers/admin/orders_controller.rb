@@ -1,5 +1,14 @@
 class Admin::OrdersController < ApplicationController
+   before_action :authenticate_admin!
+
   def top
+
+
+
+
+     # @orders = Order.where(created_at: Date.today).count
+
+
      # @order = Order.find(params[:id])
      # @order = Order.find_by(id: params[:id])
     # # 変数@likes_countを定義
@@ -8,8 +17,9 @@ class Admin::OrdersController < ApplicationController
     # @orders = Order.all
     # @order = Order.where(created_at: 1.day.ago.all_day)
 
-    range = Date.today.beginning_of_day..Date.today.end_of_day
-    @order = Order.where(created_at: range)
+     range = Date.today.beginning_of_day..Date.today.end_of_day
+     @order = Order.where(created_at: range)
+
   end
 
   def index
