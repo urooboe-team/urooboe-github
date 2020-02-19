@@ -20,7 +20,7 @@
   <nav>
         <ul class="nav navbar-nav navbar-right">
 
-          <% if customer_signed_in? %>
+          <% if customer_signed_in? && request.fullpath.index("/admin/") == nil %>
 
           <h3>
           <%= current_customer.last_name + current_customer.last_name %>さんがログイン中です。
@@ -35,14 +35,16 @@
            <li class="nav-list-item">
               <%= link_to "カート", cart_items_path %></li>
 
-           <li class="nav-list-item">
-              <%= link_to "ログイン", new_customer_session_path %></li>
+        <!--    <li class="nav-list-item">
+              <%= link_to "ログイン", new_customer_session_path %></li> -->
 
            <li class="nav-list-item">
               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
 
            <li class="nav-list-item">
               <%= link_to "マイページ", customer_path %></li>
+
+
 
           <% elsif admin_signed_in? %>
 
@@ -57,9 +59,9 @@
 
            <li class="nav-list-item">
               <%= link_to "注文履歴一覧", admin_orders_path %></li>
-
+<!-- 
           <li class="nav-list-item">
-              <%= link_to "ログイン", new_admin_session_path %></li>
+              <%= link_to "ログイン", new_admin_session_path %></li> -->
 
            <li class="nav-list-item">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
@@ -85,7 +87,7 @@
 
     <%= yield %>
     
-    <footer class="footer">
+   <footer class="footer">
     <div class="container">
       <div class="row">
         <div class="col-xs-3 col-xs-offset-9">

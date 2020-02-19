@@ -2,9 +2,6 @@ class OrdersController < ApplicationController
   def new
     @address = Address.new
     @order = Order.new
-
-
-
   end
 
   def thanks
