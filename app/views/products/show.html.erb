@@ -4,13 +4,17 @@
 			<h1>ジャンル検索</h1>
 			<% Genre.all.each do | genre | %>
 			<% if genre.display == true %>
+
 			<p>
 			<%= link_to genre.genre_name,products_path(genre_name: genre.genre_name) %>
+
 			</p>
 			<% end %>
 			<% end %>
 		</div>
-		
+
+
+
 		<div class="col-xs-4">
 			<%= attachment_image_tag @product,:product_image,:fill,300,300,format:'jpeg' %>
 		</div>
