@@ -2,22 +2,23 @@
 	<div class="row">
 		<div class="col-md-3">
 
+
 			<h3 class="line">ジャンル検索</h3>
 			<div class="genre">
 			<% @genres.each do | genre | %>
 			 <% if genre.display == true %>
+
 			<p>
 			<%= link_to genre.genre_name,products_path(genre_name: genre.genre_name) %>
 			</p>
 			<% end %>
-			<%end%>
+			<% end %>
 		</div>
 	</div>
 
 		<div class="col-md-9">
-			<div>
-			  <% @products.each do |product| %>
 
+			  <% @products.each do |product| %>
 			   <% if product.genre.display == true %>
 			   <div class="cake">
 
@@ -29,10 +30,12 @@
 			     <%= product.add_tax  %>円
 			     <% end %>
 			 	</p>
+
 			 </div>
+
 			     <% end %>
 			  <% end %>
-			</div>
+
 		</div>
 	</div>
-</div>
+ </div>

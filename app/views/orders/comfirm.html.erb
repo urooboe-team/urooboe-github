@@ -10,16 +10,38 @@
    <th>数量</th>
    <th>小計</th>
    </tr>
+
+ <tbody>
+  <% sum = 0 %>
+  <% @carts.each do |cart| %>
+　　<tr>
+    <td><%= cart.product.product_name  %></td>
+     <td><%= cart.product.add_tax %></td>
+      <td><%= cart.quantity %></td>
+       <td><%= cart.product.unit_price * cart.quantity %></td>
+   </tr>
+   <% sum += cart.product.unit_price * cart.quantity %>
+<% end %>
+</tbody>
  </table>
 
 　　<table class="table">
 
-   <tr>
-   <th>送料　</th>
-   <th>合計　</th>
-   <th>合計金額　</th>
 
-   </tr>
+   <tr>
+   <th>送料</th>
+   <th>小計</th>
+   <th>ご請求金額</th>
+  </tr>
+  <tbody>
+    <tr>
+    <td><%= @order.freight %></td>
+    <td><%= sum %></td>
+    <td><%= @order.freight + sum %></td>
+    </tr>
+
+
+  </tbody>
 
 </table>
 
@@ -48,6 +70,8 @@
 
   <%= f.hidden_field :payment, value: @order.payment  %>
   <%= f.hidden_field :address, value: @order.address %>
+  <% total_fee = @order.freight + sum %>
+  <%= f.hidden_field :total_fee, value: total_fee %>
 
   <%= f.submit '購入する' ,class:"btn btn-primary"%>
 

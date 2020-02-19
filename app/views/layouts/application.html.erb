@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/9f7238856e.js" crossorigin="anonymous"></script>
+
   </head>
 
   <body>
@@ -23,7 +24,7 @@
           <% if customer_signed_in? && request.fullpath.index("/admin/") == nil %>
 
           <h3>
-          <%= current_customer.last_name + current_customer.last_name %>さんがログイン中です。
+          <%= current_customer.last_name + current_customer.first_name %>さんがログイン中です。
           </h3>
 
            <li class="nav-list-item">
@@ -86,7 +87,7 @@
     </header>
 
     <%= yield %>
-    
+
    <footer class="footer">
     <div class="container">
       <div class="row">
@@ -96,6 +97,7 @@
       </div>
     </div>
   </footer>
+
 
   </body>
 </html>
