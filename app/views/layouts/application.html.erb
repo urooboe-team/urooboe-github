@@ -21,11 +21,6 @@
           <% if customer_signed_in? && request.fullpath.index("/admin/") == nil %>
 
 
-            <h4>
-            <%= current_customer.last_name + current_customer.first_name %>さんがログイン中です。
-            </h4>
-
-
              <li class="nav-list-item">
                 <%= link_to "商品一覧", products_path %></li>
 
@@ -48,10 +43,10 @@
                 <%= link_to "マイページ", customer_path %></li>
 
             <form class="navbar-form navbar-right" role="search">
+            <h4>
+            <%= current_customer.last_name + current_customer.first_name %>さんがログイン中です。
+            </h4>
 
-              <h3　class="login-name">
-            <%= current_customer.last_name + current_customer.last_name %>さんがログイン中です。
-            </h3>
 
               <div class="form-group">
                 <input type="text" class="form-control key" placeholder="検索キーワード">
@@ -88,9 +83,9 @@
            <form class="navbar-form navbar-right" role="search">
 
 
-            <h3　class="login-name">
-            <%= current_customer.last_name + current_customer.last_name %>さんがログイン中です。
-            </h3>
+            <h4>
+            <%= current_customer.last_name + current_customer.first_name %>さんがログイン中です。
+            </h4>
 
 
              <div class="form-group">
@@ -101,9 +96,6 @@
 
 
             <% else %>
-
-
-
 
                  <li class="headeritem">
                     <%= link_to "商品一覧", products_path %></li>
