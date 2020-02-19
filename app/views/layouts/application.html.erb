@@ -13,7 +13,9 @@
   </head>
 <body>
    <header>
+
      <nav class="navbar-right">
+
       <ul class="header">
           <% if customer_signed_in? && request.fullpath.index("/admin/") == nil %>
 
@@ -22,11 +24,12 @@
             <%= current_customer.last_name + current_customer.first_name %>さんがログイン中です。
             </h4>
 
-             <li class="nav-list-item">
-                <%= link_to "Top(商品一覧)", products_path %></li>
 
              <li class="nav-list-item">
-                <%= link_to "詳細ページ(aboutページ)", homes_about_path %></li>
+                <%= link_to "商品一覧", products_path %></li>
+
+             <li class="nav-list-item">
+                <%= link_to "詳細ページ", homes_about_path %></li>
 
 
              <li class="nav-list-item">
@@ -44,6 +47,11 @@
                 <%= link_to "マイページ", customer_path %></li>
 
             <form class="navbar-form navbar-right" role="search">
+
+              <h3　class="login-name">
+            <%= current_customer.last_name + current_customer.last_name %>さんがログイン中です。
+            </h3>
+
               <div class="form-group">
                 <input type="text" class="form-control key" placeholder="検索キーワード">
               </div>
@@ -56,7 +64,7 @@
 
 
                  <li class="nav-list-item">
-                    <%= link_to "Top(商品一覧)", admin_products_path %></li>
+                    <%= link_to "商品一覧", admin_products_path %></li>
 
                  <li class="nav-list-item">
                     <%= link_to "会員一覧", admin_orders_path %></li>
@@ -76,6 +84,12 @@
 
            <form class="navbar-form navbar-right" role="search">
 
+
+            <h3　class="login-name">
+            <%= current_customer.last_name + current_customer.last_name %>さんがログイン中です。
+            </h3>
+
+
              <div class="form-group">
                 <input type="text" class="form-control" placeholder="検索キーワード">
              </div>
@@ -84,12 +98,16 @@
 
 
             <% else %>
+
+
+
+
                  <li class="headeritem">
-                    <%= link_to "Top(商品一覧)", products_path %></li>
+                    <%= link_to "商品一覧", products_path %></li>
 
 
                  <li class="nav-list-item">
-                    <%= link_to "詳細ページ(aboutページ)", homes_about_path %></li>
+                    <%= link_to "詳細ページ", homes_about_path %></li>
 
                  <li class="nav-list-item">
                     <%= link_to "ログイン", new_customer_session_path %></li>
