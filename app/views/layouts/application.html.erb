@@ -44,6 +44,12 @@
 
            <li class="nav-list-item">
               <%= link_to "マイページ", customer_path %></li>
+              <form class="navbar-form navbar-right" role="search">
+             <div class="form-group">
+                <input type="text" class="form-control" placeholder="検索キーワード">
+             </div>
+               <button type="submit" class="btn btn-default">検索</button>
+           </form>
 
           <% elsif admin_signed_in? %>
 
@@ -64,6 +70,12 @@
 
            <li class="nav-list-item">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+              <form class="navbar-form navbar-right" role="search">
+             <div class="form-group">
+                <input type="text" class="form-control" placeholder="検索キーワード">
+             </div>
+               <button type="submit" class="btn btn-default">検索</button>
+           </form>
 
           <% else %>
 
