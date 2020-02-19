@@ -13,13 +13,15 @@
   </head>
 <body>
    <header>
-     <nav >
+
+     <nav class="navbar-right">
+
       <ul class="header">
           <% if customer_signed_in? && request.fullpath.index("/admin/") == nil %>
 
 
             <h4>
-            <%= current_customer.last_name + current_customer.fir_name %>さんがログイン中です。
+            <%= current_customer.last_name + current_customer.first_name %>さんがログイン中です。
             </h4>
 
 
@@ -68,7 +70,7 @@
                     <%= link_to "会員一覧", admin_orders_path %></li>
 
                  <li class="nav-list-item">
-                    <%= link_to "ジャンル一覧", cart_items_path %></li>
+                    <%= link_to "ジャンル一覧", admin_genres_path %></li>
 
 
                  <li class="nav-list-item">
