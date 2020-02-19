@@ -23,15 +23,13 @@
 			</tr>
 			<tbody>
 				<% sum = 0 %>
-				<% @order_products.each do |order_product| %>
 				<tr>
+					<% @order.order_products.each do |order_product| %>
 					<td><%= order_product.product.product_name %></td>
 					<td><%= order_product.add_tax %></td>
 					<td><%= order_product.quantity %></td>
 					<td><%= order_product.unit_price * order_product.quantity %></td>
-
 					
-
 					<td>
 						<%= form_for(order_product,url:admin_order_products_path(order_product),method: :patch) do |f| %>
 						<%= f.select(:production_status, OrderProduct.production_statuses.keys.to_a) %>
@@ -39,9 +37,8 @@
 							<% sum += order_product.unit_price * order_product.quantity %>
 					<% end %>
 						</td>
-					
+						<% end %>
 				</tr>
-				<% end %>
 			</tbody>
 	</table>
 	</div>
