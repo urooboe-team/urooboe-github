@@ -24,6 +24,21 @@ class Customer < ApplicationRecord
   has_many :addresses,  dependent: :destroy
   has_many :orders, dependent: :destroy
 
+  # 物理削除の代わりにユーザーの`deleted_at`をタイムスタンプで更新
+  def soft_delete
+    update_attribute(:member_status, false)
+  end
+
+  # ユーザーのアカウントが有効であることを確認
+  def active_for_authentication?
+    super && member_status
+  end
+
+  # 削除したユーザーにカスタムメッセージを追加します
+  # def inactive_message
+  #   !member_status ? super : :deleted_account
+  # end
+
   # enum member_status: { 有効: true, 退会: false }
 
 end
