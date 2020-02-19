@@ -9,7 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/9f7238856e.js" crossorigin="anonymous"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap&subset=japanese" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Asap|Comfortaa|EB+Garamond|Maven+Pro|Simonetta&display=swap" rel="stylesheet">
   </head>
 <body>
    <header>
@@ -17,6 +17,7 @@
      <nav class="navbar-right">
 
       <ul class="header">
+
           <% if customer_signed_in? && request.fullpath.index("/admin/") == nil %>
 
 
@@ -67,7 +68,9 @@
                     <%= link_to "商品一覧", admin_products_path %></li>
 
                  <li class="nav-list-item">
+
                     <%= link_to "会員一覧", admin_orders_path %></li>
+
 
                  <li class="nav-list-item">
                     <%= link_to "ジャンル一覧", admin_genres_path %></li>
@@ -126,7 +129,7 @@
     </header>
   <%= yield %>
   <footer class="footer">
-    <h3 class="footer-font">ながのケーキ</h3>
+     <h3 class="logo-font">NAGANO CAKE</h3>
   </footer>
  </body>
 </html>
