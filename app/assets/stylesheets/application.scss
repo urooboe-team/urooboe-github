@@ -19,8 +19,8 @@
 .btn-circle-flat {
   display: inline-block;
   text-decoration: none;
-  background: #F8C446;
-  color: #FFF;
+  background: #664d51;
+  color: #ffe4e1;
   width: 50px;
   height: 50px;
   line-height: 50px;
@@ -31,6 +31,7 @@
   float:right;
   font-size:40px;
   margin-right:70px;
+  margin-bottom:3px;
 }
 
 .btn-circle-flat:hover {
@@ -243,7 +244,6 @@ quantity-box{
 }
 
 
-
 .footer{
 	background-color:#ffe4e1;
 	height:70px;
@@ -262,7 +262,5 @@ quantity-box{
   text-align:right;
 }
 
-.navbar-right{
-  padding-right:40px;
-}
+
 
