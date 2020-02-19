@@ -42,6 +42,10 @@
  width:50px;
  float:left;
  }
+.big-box{
+  width:90%;
+  margin:0 auto;
+}
 
 a{
  font-family:arial;
@@ -49,18 +53,38 @@ a{
  margin: 0 auto;
  color:#664d51;
  }
+ a:hover{
+ color:#664d51;
+ text-decoration: none;
+ }
 
 
  header{
  height: 90px;
+ font-size: 15px;
  background-color:#ffe4e1;
  text-align: center;
  color:#664d51;
- margin-bottom: 20px
+ margin-bottom: 10px
  }
- .nav-item:hover{
-  background-color: red;
+
+.header {
+  width: 90%;
+  list-style: none;
+  overflow: hidden;
+  margin:0 auto;
 }
+.header-item {
+  width: 100px;
+  text-align: center;
+  float: left;
+}
+.header-item:hover{
+  padding:2px;
+  text-decoration: none;
+  border-bottom: dashed 1px #664d51
+}
+
 
 
 body{
@@ -69,7 +93,7 @@ body{
  height: 800px;
  }
 
- .clearfix::after {
+.clearfix::after {
   content: "";
   display: block;
   clear: both;
@@ -80,60 +104,66 @@ body{
  padding-right:30px;
  }
 
- .product-box{
- width: 100%;
- height: 300px;
- margin: 0 auto;
- }
-
 
  .cake{
  display:inline-block;
  float:left;
  padding-right:30px;
- background-color:#fffacd;
- padding: 30px 0 30px 30px;
+ padding: 20px 0 20px 30px;
  }
  .cake:hover{
- background-color:#fffacd;
+ border-radius: 10px;
+ background-color:#ffe4e1;
  }
 
 
 
 .genre-box{
- width: 60%;
+ width: 70%;
  padding: 10px;
  font-family:"serif";
  background-color:#ffe4e1;
+ border-radius: 10px 10px 0 0;
+ margin:20px 0;
  }
 .genre-font-h4{
  font-size: 18px;
-  border-bottom: #664d51 solid 1px;
+  border-bottom: solid 1px #664d51;
   padding: 10px;
   background-color:#ffe4e1;
+  text-align: center;
 }
 .genre-font{
  font-size: 16px;
+ margin:15px 0;
+ text-align: center;
  }
 .genre-font:hover{
-  background-color:#fffacd;
+  border-bottom: dashed 1px #664d51;
+}
+
+.show-image-box, .show-product-box{
+  margin:60px auto;
+}
+.show-image-box {
+  border: #ffe4e1 solid 2px;
 }
 
 
-
 .empty{
-	margin: 10px 0;
+	margin: 10px 0 20px 0;
 	background-color:#664d51;
  	border: #ffe4e1 solid 1px;
  	font-family:arial;
 }
- .change{
+ .change, .back, .next{
  color: #664d51;
  background-color:#ffe4e1;
  border: #664d51 solid 1px;
  font-family:arial;
+ margin:0 0 10px 0;
  }
-.change:hover{
+.change:hover, .back:hover, .next:hover{
 	color: #ffe4e1;
 	background-color:#664d51;
  	border: #ffe4e1 solid 1px;
@@ -144,26 +174,55 @@ body{
  	border: #ffe4e1 solid 1px;
  	font-family:arial;
 }
-.back, .next{
-  color: #664d51;
-  background-color:#fffacd;
-  border: #664d51 solid 1px;
-  font-family:arial;
-}
-.back:hover, .next:hover{
-	color: #fffacd;
-	background-color:#664d51;
- 	border: #fffacd solid 1px;
- 	font-family:arial;
+
+
+
+table th {
+  background-color:#ffe4e1;
+  }
+table th, table td  {
+  padding: 10px;
+  border: solid 1px #664d51;
+  font-size:15px;
 }
 table, .product-table{
   border: solid 2px #664d51;
+  margin: 10px 0 ;
 }
-table th, table td, .product-table tr, .product-table th, .product-table td {
-  border: solid 1px #664d51;
+.cart-box{
+  width: 780px;
+  height: 340px;
+  border-bottom: dotted 10px #ffe4e1;
+  overflow: scroll;
+}
+.product-table {
+  width: 100%;
+}
+.product-table th,.product-table td{
+ text-align: center;
 }
 
+.total-table{
+  margin: 20px 0;
+  }
+.total-table th, .total-table td{
+  font-size:15px;
+}
+.total-table td{
+ padding: 0 30px;
+ }
 
+quantity-box{
+  heigth: 100px;
+  width: 100px;
+}
+
+.customer-table{
+  margin:20px 0;
+}
+.customer-table th, .customer-table td{
+  padding: 10px 60px;
+}
 
 .footer{
 	background-color:#ffe4e1;
@@ -173,3 +232,7 @@ table th, table td, .product-table tr, .product-table th, .product-table td {
 	width:100%;
 }
 
+
+.footer-font {
+  font-family: 'Noto Sans JP', sans-serif;
+}
