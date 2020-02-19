@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-3">
+<<<<<<< HEAD
 	<h2>注文履歴詳細</h2>
 	<label>注文情報</label>
 	<table class="table">
@@ -25,25 +26,30 @@
 		</tbody>
 	</table>
 	</div>
+
 	<div class="col-xs-9">
       <label>請求情報</label>
 	  <table class="table">
 		  <tbody>
+
 			 <% sum = 0 %>
 			 <% sum += @order_product.add_tax * @order_product.quantity %>
 
 			 <tr>
+
 				<td>商品合計</td>
 				<td><%= sum %>円</td>
-			 </tr>
-			 <tr>
+			</tr>
+			<tr>
 				<td>配送料</td>
 				<td><%= @order.freight %>円</td>
-			 </tr>
-			 <tr>
+			</tr>
+			<tr>
 				<td>ご請求額</td>
+
 				<td><%= @order.total_fee %>円</td>
 			 </tr>
+
 
 		  </tbody>
 	  </table>
@@ -52,15 +58,15 @@
 
 	<div class="row">
 		<div class="col-xs-3">
-     <label>注文内容</label>
-	  <table class="table">
+		    <label>注文内容</label>
+			 <table class="table">
+				<tr>
+					<th>商品</th>
+					<th>単価</th>
+					<th>個数</th>
+					<th>小計</th>
+				</tr>
 
-			<tr>
-				<th>商品</th>
-				<th>単価</th>
-				<th>個数</th>
-				<th>小計</th>
-			</tr>
 
 		 <tbody>
 			<tr>
@@ -75,5 +81,6 @@
 		 </tbody>
 	  </table>
 	</div>
+
 	</div>
 </div>

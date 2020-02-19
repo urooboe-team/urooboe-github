@@ -9,69 +9,72 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/9f7238856e.js" crossorigin="anonymous"></script>
 
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap&subset=japanese" rel="stylesheet">
   </head>
-
-  <body>
-    <header>
-      <nav class="navbar navbar-warning">
-        <div class="container">
-      <div>
-       <%= image_tag  "cake.png" ,class:"logo" %>
-      </div>
-  <nav>
-        <ul class="nav navbar-nav navbar-right">
-
+<body>
+   <header>
+     <nav>
+      <ul class="header">
           <% if customer_signed_in? && request.fullpath.index("/admin/") == nil %>
 
-          <h3>
-          <%= current_customer.last_name + current_customer.first_name %>さんがログイン中です。
-          </h3>
+            <h4>
+            <%= current_customer.last_name + current_customer.last_name %>さんがログイン中です。
+            </h4>
 
-           <li class="nav-list-item">
-              <%= link_to "Top(商品一覧)", root_path %></li>
+             <li class="nav-list-item">
+                <%= link_to "Top(商品一覧)", products_path %></li>
 
-           <li class="nav-list-item">
-              <%= link_to "詳細ページ(aboutページ)", homes_about_path %></li>
+             <li class="nav-list-item">
+                <%= link_to "詳細ページ(aboutページ)", homes_about_path %></li>
 
-           <li class="nav-list-item">
-              <%= link_to "カート", cart_items_path %></li>
 
-        <!--    <li class="nav-list-item">
-              <%= link_to "ログイン", new_customer_session_path %></li> -->
+             <li class="nav-list-item">
+                <%= link_to "カート", cart_items_path %></li>
 
-           <li class="nav-list-item">
-              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+    <!--    <li class="nav-list-item">
+          <%= link_to "ログイン", new_customer_session_path %></li> -->
 
-           <li class="nav-list-item">
-              <%= link_to "マイページ", customer_path %></li>
-              <form class="navbar-form navbar-right" role="search">
-             <div class="form-group">
-                <input type="text" class="form-control" placeholder="検索キーワード">
-             </div>
-               <button type="submit" class="btn btn-default">検索</button>
-           </form>
 
-          <% elsif admin_signed_in? %>
+             <li class="nav-list-item">
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
 
-           <li class="nav-list-item">
+
+          <li class="nav-list-item">
+                <%= link_to "マイページ", customer_path %></li>
+
+            <form class="navbar-form navbar-right" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control key" placeholder="検索キーワード">
+              </div>
+              <button type="submit" class="btn btn-default next">検索</button>
+               </form>
+
+            <% elsif admin_signed_in? %>
+            <li class="nav-list-item">
               <%= link_to "Topページ", admin_orders_top_path %></li>
 
-           <li class="nav-list-item">
-              <%= link_to "商品一覧", admin_products_path %></li>
+
+                 <li class="nav-list-item">
+                    <%= link_to "Top(商品一覧)", admin_products_path %></li>
+
+                 <li class="nav-list-item">
+                    <%= link_to "会員一覧", orders_top_path %></li>
+
+                 <li class="nav-list-item">
+                    <%= link_to "ジャンル一覧", cart_items_path %></li>
 
 
-           <li class="nav-list-item">
-              <%= link_to "会員一覧", admin_customers_path %></li>
+                 <li class="nav-list-item">
+                    <%= link_to "注文履歴一覧", admin_orders_path %></li>
 
-           <li class="nav-list-item">
-              <%= link_to "ジャンル一覧", admin_genres_path %></li>
 
-           <li class="nav-list-item">
-              <%= link_to "注文履歴一覧", admin_orders_path %></li>
+                 <li class="nav-list-item">
+                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+                    <li class="nav-list-item">
+                    </li>
 
-           <li class="nav-list-item">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-              <form class="navbar-form navbar-right" role="search">
+           <form class="navbar-form navbar-right" role="search">
+
              <div class="form-group">
                 <input type="text" class="form-control" placeholder="検索キーワード">
              </div>
@@ -79,50 +82,34 @@
            </form>
 
 
-          <% else %>
+            <% else %>
+                 <li class="headeritem">
+                    <%= link_to "Top(商品一覧)", products_path %></li>
 
-           <li class="nav-list-item">
-              <%= link_to "Top(商品一覧)", products_path %></li>
 
-           <li class="nav-list-item">
-              <%= link_to "詳細ページ(aboutページ)", homes_about_path %></li>
+                 <li class="nav-list-item">
+                    <%= link_to "詳細ページ(aboutページ)", homes_about_path %></li>
 
-           <li class="nav-list-item">
-              <%= link_to "ログイン", new_customer_session_path %></li>
+                 <li class="nav-list-item">
+                    <%= link_to "ログイン", new_customer_session_path %></li>
 
             <li class="nav-list-item">
               <%= link_to "管理者の方はこちら", new_admin_session_path %></li>
            <form class="navbar-form navbar-right" role="search">
              <div class="form-group">
-                <input type="text" class="form-control" placeholder="検索キーワード">
+                <input type="text" class="form-control key" placeholder="検索キーワード">
              </div>
-               <button type="submit" class="btn btn-default">検索</button>
+               <button type="submit" class="btn btn-default next">検索</button>
            </form>
-            </ul>
-          </nav>
-
-             </div>
-
-</nav>
-
-         <% end %>
-
+        <% end %>
+         </ul>
+       </nav>
     </header>
-
-    <%= yield %>
-
-   <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-3 col-xs-offset-9">
-          <P>Nagano cake</P>
-        </div>
-      </div>
-    </div>
+  <%= yield %>
+  <footer class="footer">
+    <h3 class="footer-font">ながのケーキ</h3>
   </footer>
-
-
-  </body>
+ </body>
 </html>
 
 
