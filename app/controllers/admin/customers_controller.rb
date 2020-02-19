@@ -1,6 +1,6 @@
 class Admin::CustomersController < ApplicationController
    before_action :authenticate_admin!
- end
+
   def index
     @customers = Customer.all
   end
