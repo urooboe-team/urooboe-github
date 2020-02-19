@@ -21,7 +21,7 @@ class CustomersController < ApplicationController
 
   def destroy
    @customer = current_customer
-    if @customer.destroy
+    if @customer.soft_delete
        redirect_to products_path
     else
     	   render action: :destroy
