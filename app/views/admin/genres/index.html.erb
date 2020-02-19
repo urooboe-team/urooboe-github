@@ -1,5 +1,7 @@
 
 <div class="container">
+	
+	<div class="big-box">
  <h2>ジャンル追加・一覧画面</h2>
  <%= form_for :genre,url: admin_genres_path do |f| %>
 	<div class="form-inline">
@@ -15,13 +17,14 @@
 	    </label>
 	 </div>
 	  <div class="form-group">
-		 <label><%= f.submit '追加', class:"btn btn-primary" %></label>
+		 <label><%= f.submit '追加', class:"btn btn-primary next" %></label>
      </div>
 	</div>
  <% end %>
 <br>
 <br>
-  <table class="table" style="width: 40%;">
+<div class="cart-box">
+  <table class="table>
   		<tr class="active">
   		<th>ジャンル</th>
   		<th>状態</th>
@@ -37,10 +40,11 @@
 			 <% else genre.display == false %>
 			 <td>無効</td>
 			 <% end %>
-			 <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class:"btn btn-primary" %></td>
+			 <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class:"btn btn-primary next" %></td>
 		 </tr>
 		 <% end %>
 	  </tbody>
   </table>
 </div>
-
+</div>
+</div>
