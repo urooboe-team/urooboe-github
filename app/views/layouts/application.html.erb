@@ -58,9 +58,8 @@
 
            <li class="nav-list-item">
               <%= link_to "注文履歴一覧", admin_orders_path %></li>
-<!-- 
-          <li class="nav-list-item">
-              <%= link_to "ログイン", new_admin_session_path %></li> -->
+ 
+          
 
            <li class="nav-list-item">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
@@ -75,6 +74,9 @@
 
            <li class="nav-list-item">
               <%= link_to "ログイン", new_customer_session_path %></li>
+
+            <li class="nav-list-item">
+              <%= link_to "管理者の方はこちら", new_admin_session_path %></li>
            <form class="navbar-form navbar-right" role="search">
              <div class="form-group">
                 <input type="text" class="form-control" placeholder="検索キーワード">

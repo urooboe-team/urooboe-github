@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
    before_action :authenticate_admin!
- end
+ 
   def top
 
 
@@ -17,8 +17,8 @@ class Admin::OrdersController < ApplicationController
     # @orders = Order.all
     # @order = Order.where(created_at: 1.day.ago.all_day)
 
-    range = Date.today.beginning_of_day..Date.today.end_of_day
-    @order = Order.where(created_at: range)
+     range = Date.today.beginning_of_day..Date.today.end_of_day
+     @order = Order.where(created_at: range)
 
   end
 
