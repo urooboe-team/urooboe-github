@@ -66,14 +66,16 @@ a{
  background-color:#ffe4e1;
  text-align: center;
  color:#664d51;
- margin-bottom: 10px
+ margin-bottom: 10px;
+
  }
 
 .header {
-  width: 90%;
+  width: 1200px;
   list-style: none;
   overflow: hidden;
-  margin:0 auto;
+
+  padding-right: 50px;
 }
 .key{
   border: solid 1px #664d51;
@@ -265,14 +267,15 @@ quantity-box{
 }
 
 .navbar-form {
-  width: 350px;
-  margin : 0 autos ;
-  padding: 0 ;
+  width: 450px;
+  margin-left : 350p ;
+  padding-left : 150px ;
 
 }
 
 .logo {
   width: 250px;
+  }
 
 .name{
   text-align:right;
