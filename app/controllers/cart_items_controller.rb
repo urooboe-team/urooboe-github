@@ -1,4 +1,5 @@
 class CartItemsController < ApplicationController
+before_action :authenticate_customer!
 
   def index
      @cart_items = current_customer.cart_items
@@ -9,6 +10,8 @@ class CartItemsController < ApplicationController
        redirect_to '/products/' + params[:cart_item][:product_id]
     else
       cart_item = CartItem.find_by(customer_id: current_customer,product_id: cart_item_params[:product_id])
+
+   
       if cart_item == nil
          cart_item = CartItem.new(cart_item_params)
          cart_item.customer_id = current_customer.id
