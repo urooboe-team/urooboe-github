@@ -1,20 +1,30 @@
 <div class="container">
 	<!-- current_customerか？ -->
 	<h2>注文詳細画面</h2>
-	<label>購入者<%= @order.customer.last_name. + @order.customer.first_name %></label>
-	<label>配送先<%= @order.postcode %><%=@order.address %><%= @order.ship_name %></label>
-	<label>支払い方法<%= @order.payment %></label>
-	<label>注文ステータス
-		<%= form_for (@order),url: admin_order_path(@order.id) do |f| %>
-		<%= f.select :order_status,[["入金待ち","入金待ち"],["入金確認","入金確認"],["製作中","製作中"],["発送準備中","発送準備中"],["発送済み","発送済み"]]%><%= f.submit '更新', class:"btn btn-primary" %>
-		<% end %>
-    </label>
-
-
 	<div class="row">
-		<div class="col-xs-3">
+		<div class="col-xs-4">
 	<table class="table">
-			<tr class="active">
+		<tr>
+	<td class="title">購入者</td><td><%= @order.customer.last_name. + @order.customer.first_name %></td>
+	</tr>
+	<tr>
+	<td class="title">配送先</td><td><%= @order.postcode %><%=@order.address %><%= @order.ship_name %></td>
+	</tr>
+	<tr>
+	<td class="title">支払い方法</td><td><%= @order.payment %></td>
+	</tr>
+	<tr>
+	<td class="title">注文ステータス</td><td>
+		<%= form_for (@order),url: admin_order_path(@order.id) do |f| %>
+		<%= f.select :order_status,[["入金待ち","入金待ち"],["入金確認","入金確認"],["製作中","製作中"],["発送準備中","発送準備中"],["発送済み","発送済み"]]%><%= f.submit '更新',class:"btn btn-primary change" %>
+		<% end %>
+    </td>
+    </tr>
+</table>
+</div>
+		<div class="col-xs-8">
+	<table class="table">
+			<tr class="title">
 				<th>商品名</th>
 				<th>単価（税込）</th>
 				<th>数量</th>
@@ -23,34 +33,41 @@
 			</tr>
 			<tbody>
 				<% sum = 0 %>
-				<% @order_products.each do |order_product| %>
+				<% @order.order_products.each do |order_product| %>
 				<tr>
+
 					<td><%= order_product.product.product_name %></td>
 					<td><%= order_product.add_tax %></td>
 					<td><%= order_product.quantity %></td>
 					<td><%= order_product.unit_price * order_product.quantity %></td>
 
-					
-
 					<td>
 						<%= form_for(order_product,url:admin_order_products_path(order_product),method: :patch) do |f| %>
 						<%= f.select(:production_status, OrderProduct.production_statuses.keys.to_a) %>
-						<%= f.submit '更新', class:"btn btn-primary",data: {"turbolinks" => false} %>
+						<%= f.submit '更新', class:"btn btn-primary change",data: {"turbolinks" => false} %>
 							<% sum += order_product.unit_price * order_product.quantity %>
 					<% end %>
 						</td>
-					
+
 				</tr>
 				<% end %>
 			</tbody>
 	</table>
 	</div>
-
-		<div class="col-xs-9">
-			<label>合計<%= sum %>円</label>
-	        <label>送料<%= @order.freight %>円</label>
-	        
-	        <label>請求金額合計<%= @order.total_fee %>円</label>
+</div>
+<div class="row">
+		<div class="col-xs-3">
+			<table class="active">
+			<tr>
+			<td class="title">合計</td><td><%= sum %>円</td>
+			</tr>
+			<tr>
+	        <td class="title">送料</td><td><%= @order.freight %>円</td>
+	        </tr>
+	        <tr>
+	        <td class="title">請求金額合計</td><td><%= @order.total_fee %>円</td>
+	        </tr>
+	        </table>
 		</div>
 	</div>
 </div>
