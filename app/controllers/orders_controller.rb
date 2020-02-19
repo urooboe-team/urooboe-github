@@ -12,14 +12,14 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
-    @order_products = OrderProduct.all
-    @order = current_customer.id
+    # @order_products = OrderProduct.all
+    # @order = current_customer
   end
 
   def show
     @order = Order.find(params[:id])
-    @order_products = OrderProduct.all
-    # @order_product = OrderProduct.find(params[:id])
+    # @order_products = OrderProduct.all
+    @order_product = OrderProduct.find(params[:id])
   end
 
   def create
@@ -82,7 +82,7 @@ class OrdersController < ApplicationController
 
 private
   def order_params
-   params.require(:order).permit(:postcode, :address, :ship_name, :total_fee)
+   params.require(:order).permit(:postcode, :address, :ship_name, :total_fee,:payment)
   end
   def address_params
    params.require(:address).permit(:id, :postcode, :address, :ship_name)

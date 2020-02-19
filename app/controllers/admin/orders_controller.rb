@@ -29,7 +29,7 @@ class Admin::OrdersController < ApplicationController
 
   def show
   	@order = Order.find(params[:id])
-    @order_products = OrderProduct.all
+    @order_product = OrderProduct.find(params[:id])
   end
 
   def update
@@ -39,7 +39,7 @@ class Admin::OrdersController < ApplicationController
     # @order_product = OrderProduct.find(@order.order_products_id)
 
      if params[:order][:order_status] == "入金確認"
-       @order.order_products.update(production_status: '制作待ち')
+       @order.order_products.update(production_status: '製作待ち')
     end
   	@order.update(order_params)
   	redirect_to admin_orders_path
