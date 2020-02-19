@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :products, only: [:new, :index, :show, :create, :edit, :update]
   end
-patch 'admin/order_products/:id/' => "admin/order_products#update" , as:'admin_order_products'
+  patch 'admin/order_products/:id/' => "admin/order_products#update" , as:'admin_order_products'
 
   namespace :admin do
     resources :orders, only: [:index, :show, :update]
@@ -50,7 +50,7 @@ patch 'admin/order_products/:id/' => "admin/order_products#update" , as:'admin_o
  resources :orders, only: [:new, :thanks, :index, :show, :create, :comfirm]
  resources :products, only: [:index, :show]
 
- root to: "products#index"
+ root to: "homes#top"
  get 'thanks' => "orders#thanks"
  post 'thanks' => "orders#thanks"
 

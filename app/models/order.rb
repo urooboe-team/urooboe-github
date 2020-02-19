@@ -18,4 +18,10 @@ class Order < ApplicationRecord
 		銀行振り込み: 1,
 	}
 
+	validates :postcode, presence: true, format: { with: /\A\d{7}\z/ }
+
+	validates :address, presence: true
+
+	validates :ship_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/}
+
 end
