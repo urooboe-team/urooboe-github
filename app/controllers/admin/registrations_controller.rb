@@ -2,7 +2,7 @@
 
 class Admin::RegistrationsController < Devise::RegistrationsController
   def after_sign_in_path_for(resource)
-    admin_products_path
+    admin_orders_top_path
   end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
