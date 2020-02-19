@@ -1,50 +1,52 @@
 <div class="container">
     <div class="row">
-<div class="col-xs-5">
-<h2>配送先登録/一覧</h2>
+		<div class="col-xs-5">
+			<h3>配送先登録/一覧</h3>
 
-<%= form_for(@ship_address_new) do |f| %>
-   <table class="table" border="1">
-   	<thead>
-	 	<tr>
-		    <th>郵便番号</th>
-		  <td><%= f.text_field :postcode %></td>
-		</tr>
-		<tr>
-		    <th>住所</th>
-		  <td><%= f.text_field :address %></td>
-		</tr>
-		<tr>
-		    <th style="border:none;">宛名</th>
-		  <td ><%= f.text_field :ship_name %></td>
-		</tr>
-	</table>
-    <%= f.submit '登録する', class:"btn btn-primary" %>
+		<%= form_for(@ship_address_new) do |f| %>
+		   <table class="table">
+			 	<tr>
+				    <th>郵便番号</th>
+				  <td><%= f.text_field :postcode %></td>
+				</tr>
+				<tr>
+				    <th>住所</th>
+				  <td><%= f.text_field :address %></td>
+				</tr>
+				<tr>
+				    <th>宛名</th>
+				  <td ><%= f.text_field :ship_name %></td>
+				</tr>
+			</table>
+		    <%= f.submit '登録する', class:"btn btn-primary change" %>
 
 
-    <table class="table">
-	    <tr>
-	      <th>郵便番号</th>
-	      <th>住所</th>
-	      <th>宛名</th>
-	      <th></th>
-	    </tr>
-	    <% @ship_addresses.each do |address| %>
-	    <tr>
-	      <td>
-	      	<%= address.postcode %>
-	      </td>
-	      <td>
-	      	<%= address.address %>
-	      </td>
-	      <td>
-	      	<%= address.ship_name %>
-	      </td>
-	      <td>
-	      	<%= link_to"edit", edit_address_path(address) %>
-      		<%= link_to"destory", address_path(address), method: :delete %>
-	      </td>
-	     </tr>
-	     <% end %>
-	 </table>
-<% end %>
+		    <table class="table">
+			    <tr>
+			      <th>郵便番号</th>
+			      <th>住所</th>
+			      <th>宛名</th>
+			      <th></th>
+			    </tr>
+			    <% @ship_addresses.each do |address| %>
+			    <tr>
+			      <td>
+			      	<%= address.postcode %>
+			      </td>
+			      <td>
+			      	<%= address.address %>
+			      </td>
+			      <td>
+			      	<%= address.ship_name %>
+			      </td>
+			      <td>
+			      	<%= link_to"edit", edit_address_path(address), class:"btn btn-primary change"  %>
+		      		<%= link_to"destory", address_path(address), method: :delete,  class:"btn btn-danger delete"  %>
+			      </td>
+			     </tr>
+			     <% end %>
+			 </table>
+		<% end %>
+		</div>
+	</div>
+</div>

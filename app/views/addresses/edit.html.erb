@@ -1,32 +1,32 @@
 <div class="container">
-  <div class="row">
+	<div class="row">
         <div class="col-xs-8">
-<label>配送先編集</label>
+		<h3>配送先編集</h3>
 
-   <%= form_for(@ship_address) do |address| %>
-    <table class="table">
-	    <tr>
-	      <th>郵便番号</th>
-	      <th>住所</th>
-	      <th>宛名</th>
-	      <th></th>
-	    </tr>
-	    <tr>
-	      <td>
-	      	<%= address.text_field :postcode %>
-	      </td>
-	      <td>
-	      	<%= address.text_field :address %>
-	      </td>
-	      <td>
-	      	<%= address.text_field :ship_name %>
-	      </td>
-	      <td>
-	      	<%= address.submit "編集する" ,class:"btn btn-primary"%>
-	      </td>
-	    </tr>
- 	</table>
-   <% end %>
-</div>
-</div>
+	   <%= form_for(@ship_address) do |address| %>
+	    <table class="table">
+		    <tr>
+		      <th>郵便番号</th>
+		      <th>住所</th>
+		      <th>宛名</th>
+		      <th></th>
+		    </tr>
+		    <tr>
+		      <td>
+		      	<%= address.text_field :postcode %>
+		      </td>
+		      <td>
+		      	<%= address.text_field :address %>
+		      </td>
+		      <td>
+		      	<%= address.text_field :ship_name %>
+		      </td>
+		      <td>
+		      	<%= address.submit "編集する" ,class:"btn btn-primary change"%>
+		      </td>
+		    </tr>
+	 	</table>
+		<% end %>
+		</div>
+	</div>
 </div>

@@ -1,4 +1,4 @@
-<h2>会員登録画面</h2>
+<h3>会員登録画面</h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -55,9 +55,9 @@
     <%= f.label :パスワード（確認） %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-
+<br>
   <div class="actions">
-    <%= f.submit "新規登録 & ログイン" %>
+    <%= f.submit "新規登録 & ログイン",class:"btn btn-primary next" %>
   </div>
 
 
