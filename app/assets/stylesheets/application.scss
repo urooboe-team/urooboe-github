@@ -79,6 +79,7 @@ a{
 }
 .key{
   border: solid 1px #664d51;
+  margin: 0 0 10px 0;
 }
 .nav-list-item {
   width: 100px;
@@ -87,7 +88,7 @@ a{
   float: left;
 }
 .nav-list-item:hover{
-  padding:2px;
+  
   text-decoration: none;
   border-bottom: dashed 1px #664d51
 }
@@ -266,7 +267,8 @@ quantity-box{
 
 
 .login-name {
-  text-align :rigth
+  text-align :rigth;
+  font-size: 15px;
 }
 
 .navbar-form {
@@ -278,7 +280,7 @@ quantity-box{
 
 .logo {
   width: 250px;
-  }
+}
 
 .name{
   text-align:right;
@@ -292,7 +294,14 @@ quantity-box{
 }
 .ken{
   font-size:30px;
-
 }
 
+.big-box-a {
+  padding-top: 120px;
+  padding-left: 550px;
+}
+
+.panel-body {
+  font-size:20px;
+}
 

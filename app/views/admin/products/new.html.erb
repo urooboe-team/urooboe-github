@@ -1,5 +1,5 @@
 <div class="container">
-    <h2>商品新規登録画面</h2>
+    <h3>商品新規登録画面</h3>
     <div class="row">
         <%= form_for(@product, url:admin_products_path) do |f| %>
         <div class="col-xs-3">
@@ -21,7 +21,7 @@
         <label>販売ステータス</label>
         <%= f.select :sale_status,[["販売中",'販売中'],["売り切れ",'売り切れ']] %><br>
 
-　　　　 <%= f.submit '新規登録', data: {"tubolinks" => false},class:"btn btn-primary" %>
+　　　　 <%= f.submit '新規登録', data: {"tubolinks" => false},class:"btn btn-primary next" %>
     </div>
      </div>
 

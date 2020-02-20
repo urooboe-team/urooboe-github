@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2020_02_11_061044) do
     t.string "postcode"
     t.text "address"
     t.string "ship_name"
+    t.integer "address_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,10 +81,10 @@ ActiveRecord::Schema.define(version: 2020_02_11_061044) do
 
   create_table "orders", force: :cascade do |t|
     t.string "customer_id"
-    t.integer "order_status"
+    t.integer "order_status", default: 0
     t.integer "total_fee"
     t.integer "payment"
-    t.integer "freight"
+    t.integer "freight", default: 800
     t.text "address"
     t.string "postcode"
     t.string "ship_name"
