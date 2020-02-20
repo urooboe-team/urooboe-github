@@ -1,0 +1,177 @@
+＜デバイス関係＞
+
+「作業内容など」
+
+・アドミンと会員で別々のviewが必要と考えました。
+・そのため、別々でモデル、ビュー、コントローラーを作成する必要がありました。
+・バリデーションの設定が必要だったので、モデルに追記しました。
+
+（以下手順）
+
+「基本設定」
+＊ターミナル
+
+・rails g devise:install     #デバイスのインストール
+
+　注）以下のモデル作成前に必ず行うこと！デバイスのインストールを行わなくても以下の
+　　　コマンドでモデルは作成できるが後々不具合が生じる。
+　　　僕はこれが理由で一度adminとcustomerモデルの消去が必要になりました。
+
+
+・rails g devise admin　　　　#デバイスの設定を持つadminモデルの作成
+・rails g devise customer　　#デバイスの設定を持つcustomerモデルの作成
+
+・rails g devise:views admin　　#デバイスの設定を持つadminビューの作成
+・rails g devise:views customer　#デバイスの設定を持つcustomerビューの作成
+
+・rails g devise:controllers admin　#デバイスの設定を持つadminコントローラーの作成
+・rails g devise:controllers customer　#デバイスの設定を持つcustomerコントローラーの作成
+
+
+
+
+＊config/routes.rb   #ルーティングの追記
+
+デバイス導入時のデフォルト設定では、、
+
+devise_for :admins
+devise_for :customer
+
+としか記載されていません。これでは上記で作成したコントローラーと連動せずデフォルト設定が
+採用されます。以下のように追記してコントローラーを指定してください。
+
+
+devise_for :admins, controllers: {
+      sessions:      'admins/sessions',
+      passwords:     'admins/passwords',
+      registrations: 'admins/registrations'
+  }
+  devise_for :users, controllers: {
+      sessions:      'users/sessions',
+      passwords:     'users/passwords',
+      registrations: 'users/registrations'
+  }
+
+
+
+
+＊config/initializers/devise.rb　＃引き出すviewファイルの指定
+
+以下の箇所のコメントアウトを外してtrueに変更してください。
+
+config.scoped_views = true
+
+
+これをしないと、上記で作成したコントローラーがデフォルトのデバイスのビューを呼び出すため、
+ビューファイルの変更が効きません。
+
+
+以上の作業によりadmin及びcustomerのsessionsやregistrationsのビューファイルの変更が可能となります。
+
+
+
+
+「追加設定」
+
+①ルーティングの設定（admin,customer共通）
+・デバイスを用いてログイン、サインイン、サインアウトに成功すると、自動的にルートパスが指定されます。
+・ルートパスを指定していない場合は、railsのホームページに遷移します。
+・よって、ルートパスの指定もしくはログイン、サインイン、サインアウト後の遷移先を指定する必要があります。
+・ログイン、サインイン、サインアウト後の遷移先を指定するにはsession及びregistrationのコントローラへの定義が必要です。
+
+例)adminの場合
+
+adminのragistrationコントローラー
+
+ def after_sign_in_path_for(resource)
+    admin_orders_top_path
+ end
+
+adminのsessionコントローラー
+
+  def after_sign_in_path_for(resource)
+    admin_orders_top_path
+  end
+
+  def after_sign_out_path_for(resource)
+    admin_session_path
+  end
+
+このように指定することで、遷移先を指定しました。
+
+例）customerの場合
+
+今回はルートパスとして、ルーティングでroot to: "homes#top"　と指定しているので
+上記のようにコントローラーの指定は必要ないかと思います（実際は書いていますが）。
+
+
+
+
+②バリデーション（admin,customer共通）
+・admin,customerともにモデルに記載します。
+・今回はcustomerのモデルにのみ、記載しています（admin側は登録に制限がなかったので）
+・記載方法は以下のようにしてください。
+
+例）customerのlast_nameカラムのバリデーション
+
+・validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/}
+
+・presence: true　＃空欄禁止
+
+format: { with: /\A[ぁ-んァ-ン一-龥]/}　＃全角かな、カナ、漢字意外禁止。　/\A[ぁ-んァ-ン一-龥]/　の部分を変更すれば様々なバリデーションが可能です（ネット参照してください）。
+
+
+
+③部分テンプレート
+・sessionやregistrationのviewファイルはデフォルトで部分テンプレートを利用しています。
+・sessionやregistrationのviewに記載していない文字が表示されていれば、それが原因です。
+・不具合があれば「sharedの_links」ファイルを修正すれば治ります。
+
+　<%= render "admin/shared/links" %>
+
+
+
+④論理削除の設定
+・コードを記入したファイルを記載しておきますので、今後はそのコードをコピペして使用してください。
+・今回使用したカラム名はmember_statusなので、その部分を変更して使用すれば
+いいかと。
+
+＊ルーティングの変更　＃今回は事前に行っているので大丈夫です
+
+devise_for :users, :controllers => { :registrations => 'users/registrations' }
+
+＊customerのresistrationコントローラー　＃destroyの定義
+
+  def destroy
+    resource.soft_delete
+    Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+    set_flash_message :notice, :destroyed
+    yield resource if block_given?
+    respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
+  end
+
+
+＊customerのモデル　＃soft_deleteの定義
+
+　 def soft_delete
+    update_attribute(:member_status, false)
+ 　end
+
+
+＊customerのcustomerコントローラー　＃上記の定義を用いて実行
+
+ def destroy
+   @customer = current_customer
+    if @customer.soft_delete
+       redirect_to products_path
+    else
+    	   render action: :destroy
+    end
+  end
+
+
+
+
+
+
+
