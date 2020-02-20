@@ -6,9 +6,9 @@
 <table class="table" >
 	
 	<tr >
-		<th style="border:none;">顧客ID</th>
-		<td style="border:none;"><%= @customer.id %> <% if @customer.member_status == true %></td>
-			<td style="border:none;">有効会員</td><br>
+		<th style="border:none;">顧客ID<br>（状態）</th>
+		<td style="border:none;"><%= @customer.id %> <% if @customer.member_status == true %>
+			<br>有効会員</td><br>
 			<% else %>
 			<td style="border:none;">退会済み</td><br>
 			<% end %>
@@ -38,7 +38,7 @@
 		<td style="border:none;"><%= @customer.email %></td>
 	</tr>
 
-</tbody>
+
 </table>
 
 
