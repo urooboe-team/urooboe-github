@@ -55,8 +55,8 @@
                </form>
 
             <% elsif admin_signed_in? %>
-            <li class="nav-list-item">
-              <%= link_to "Topページ", admin_orders_top_path %></li>
+                 <li class="nav-list-item">
+                  <%= link_to "Topページ", admin_orders_top_path %></li>
 
 
                  <li class="nav-list-item">
@@ -83,21 +83,15 @@
            <form class="navbar-form navbar-right" role="search">
 
 
-            <h4>
-            <%= current_customer.last_name + current_customer.first_name %>さんがログイン中です。
-            </h4>
-
-
              <div class="form-group">
                 <input type="text" class="form-control" placeholder="検索キーワード">
              </div>
                <button type="submit" class="btn btn-default">検索</button>
            </form>
 
-
             <% else %>
 
-                 <li class="headeritem">
+                 <li class="nav-list-item">
                     <%= link_to "商品一覧", products_path %></li>
 
 
