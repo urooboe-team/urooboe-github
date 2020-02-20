@@ -1,7 +1,9 @@
 <div class="big-box-a">
+
 <h1 class="confirm">ほんまに退会するん？</h1>
 
-<%= link_to "ほんまに退会する", customer_path, method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-default" %>
 
-<%= link_to "一旦考え直すわ", customer_path, class:"btn btn-default"  %>
+<%= link_to "ほんまに退会する", customer_path, method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger change" %>
+
+<%= link_to "一旦考え直すわ", customer_path, class:"btn btn-primary change"  %>
 </div>
